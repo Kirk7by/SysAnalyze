@@ -1,0 +1,98 @@
+﻿<Page x:Class="lb7.страницы.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="621"
+	Title="Page1">
+
+    <Grid>
+        <Grid Margin="0,0,5.8,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="43.2"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition x:Name="columnVievbox" Width="40*"/>
+                <ColumnDefinition Width="83*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Margin="0,2,0.4,-0.4" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
+            <DataGrid Margin="4.6,25,1.2,9.4" Grid.Column="2"/>
+            <Label Content="Информация о путевых листах" Margin="4.6,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
+            <Grid Height="40" Margin="4.6,0,0.2,2.6" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="137*"/>
+                    <ColumnDefinition Width="151*"/>
+                    <ColumnDefinition Width="135*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="upd" Content="Изменить" Margin="0.2,0,0,3" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Grid.Column="1" Click="upd_Click"/>
+                <Button x:Name="add" Content="Добавить" Margin="0,0,4.8,3" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Click="add_Click"/>
+                <Button x:Name="del" Content="Удалить" Margin="5,0,0.2,3" VerticalAlignment="Bottom" Height="37" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Grid.Column="2" Click="del_Click"/>
+            </Grid>
+            <Viewbox x:Name="Vievbox1" Margin="0,2,9.4,-0.4" Grid.ColumnSpan="2" Grid.RowSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid x:Name="gridView" Height="435" VerticalAlignment="Top">
+                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="54" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,379,0,0"/>
+                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFF8D8FF" Margin="1,-2,-1,0"/>
+                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,252,0,0"/>
+                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFACF5E5" Margin="0,125,0,0"/>
+                    <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="88,6,29,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Путевой №" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="24" Foreground="#FF1900FF" FontSize="14" FontWeight="Bold"/>
+                    <TextBox x:Name="tb1NumberTabelnogo" Height="26" Margin="74,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb1NumberAvto" Height="26" Margin="74,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Табельный:" HorizontalAlignment="Left" Margin="5,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Foreground="#FF1900FF"/>
+                    <Label Content="Номер авто:" HorizontalAlignment="Left" Margin="5,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="68" Padding="0" Height="17" Foreground="#FF1900FF"/>
+                    <Label Content="Остаток&#xA;Топлива:" HorizontalAlignment="Left" Margin="5,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Height="34"/>
+                    <Border BorderThickness="1" Height="27" Margin="0,98,0,0" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF8D8FF"/>
+                                <GradientStop Color="#FFACF5E5" Offset="1"/>
+                                <GradientStop Color="White" Offset="0.493"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Content="Информация при отъезде" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,64.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
+                    </Border>
+                    <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
+                    <TextBox x:Name="tb2DateTime" Height="26" Margin="80,196,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
+                    <TextBox x:Name="tb3OstTopliva" Height="26" Margin="80,256,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb3PokazSpidometra" Height="26" Margin="80,287,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Остаток&#xA;Топлива:" HorizontalAlignment="Left" Margin="5,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Height="34"/>
+                    <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
+                    <TextBox x:Name="tb3DateTime" Height="26" Margin="78,322,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
+                    <Border BorderThickness="1" Height="27" Margin="1,225,-1,0" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFADF7A0" Offset="1"/>
+                                <GradientStop Color="#FFACF5E5"/>
+                                <GradientStop Color="#FFECF3EF" Offset="0.451"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Content="Информация при приезде" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,35.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
+                    </Border>
+                    <Border BorderThickness="1" Height="27" Margin="0,352,0,0" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFADF7A0" Offset="1"/>
+                                <GradientStop Color="#FFADF7A0"/>
+                                <GradientStop Color="#FFECF3EF" Offset="0.451"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Content="Заправка" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,35.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
+                    </Border>
+                    <CheckBox x:Name="ch4Infozapr" Content="Информация о&#xD;&#xA; заправке" HorizontalAlignment="Left" Margin="100,357,0,0" VerticalAlignment="Top" FontSize="10" Padding="2,-4,0,0" Foreground="#FF035113"/>
+                    <TextBox x:Name="tb4MarkaTopliva" Height="19" Margin="90,384,7,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <Label Content="Марка топлива:" HorizontalAlignment="Left" Margin="5,384,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="16" FontSize="10"/>
+                    <Label Content="Ко-во литров:" HorizontalAlignment="Left" Margin="5,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="16" FontSize="10"/>
+                    <TextBox x:Name="tb4KolvoLitrov" Height="20" Margin="91,405,7,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
+    </Grid>
+</Page>

@@ -1,0 +1,45 @@
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.exe.config
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.exe
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.pdb
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.csprojResolveAssemblyReference.cache
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\MainWindow.baml
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\MainWindow.g.cs
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\App.g.cs
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7_MarkupCompile.cache
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.g.resources
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.Properties.Resources.resources
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.csproj.GenerateResource.Cache
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.exe
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.pdb
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page1.baml
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page1.g.cs
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page2.baml
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page2.g.cs
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page4.baml
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page3.baml
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page4.g.cs
+D:\oneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page3.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.exe.config
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.exe
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.pdb
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.exe
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\bin\Debug\lb7.pdb
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.csprojResolveAssemblyReference.cache
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\MainWindow.baml
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page4.baml
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page3.baml
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page2.baml
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page1.baml
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\MainWindow.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page4.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page3.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page2.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\страницы\Page1.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\App.g.cs
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7_MarkupCompile.cache
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.g.resources
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.Properties.Resources.resources
+C:\Users\Kirk7by\OneDrive\Work\СисАнализ\lab7\lb7\lb7\obj\Debug\lb7.csproj.GenerateResource.Cache
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\bin\Debug\lb7.exe.config
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.exe
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.pdb

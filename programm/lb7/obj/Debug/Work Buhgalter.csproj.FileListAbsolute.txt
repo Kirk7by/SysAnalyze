@@ -1,0 +1,21 @@
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\bin\Debug\lb7.exe.config
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\bin\Debug\lb7.exe
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\bin\Debug\lb7.pdb
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\Work Buhgalter.csprojResolveAssemblyReference.cache
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\MainWindow.baml
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page4.baml
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page3.baml
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page2.baml
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page1.baml
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\MainWindow.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page4.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page3.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page2.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\страницы\Page1.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\App.g.cs
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7_MarkupCompile.cache
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.g.resources
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.Properties.Resources.resources
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\Work Buhgalter.csproj.GenerateResource.Cache
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.exe
+C:\Users\Kirk7by\OneDrive\Work 4kurs\курсовая Сис анализ\programm\lb7\obj\Debug\lb7.pdb

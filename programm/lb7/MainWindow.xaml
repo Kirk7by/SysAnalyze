@@ -1,0 +1,29 @@
+﻿<Window x:Class="lb7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="499" Width="621.6">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="29.6"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2" Margin="0,0,0.2,-0.4" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="153*"/>
+                <ColumnDefinition Width="156*"/>
+                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="152*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Перейти_путевые" Content="Путевые заполнение" Margin="3,0,1.8,3" Background="#FFA8F8ED" BorderBrush="{x:Null}" Click="Перейти_путевые_Click"/>
+            <Button x:Name="Перейти_отчеты" Content="Формирование отчетов" Margin="2.2,-1,1.8,3" Background="#FFA8F8ED" BorderBrush="{x:Null}" Grid.Column="1" Click="Перейти_отчеты_Click"/>
+            <Button x:Name="Перейти_водители" Content="Операции с водителями" Margin="1.2,0,2.2,3" Background="#FFA8F8ED" BorderBrush="{x:Null}" Grid.Column="2" Click="Перейти_водители_Click"/>
+            <Button x:Name="Перейти_авто" Content="Операции с авто" Margin="2.8,-1,0.2,3" Background="#FFA8F8ED" BorderBrush="{x:Null}" Grid.Column="3" Click="Перейти_авто_Click"/>
+        </Grid>
+        <Frame x:Name="фрейм" Grid.ColumnSpan="2" Content="Frame" Margin="0,0,0.2,0" Source="/lb7;component/страницы/Page1.xaml" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>
