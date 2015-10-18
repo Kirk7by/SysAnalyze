@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BdModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BdModelStoreContainer">
+    <EntitySet Name="ВодителиSet" EntityType="BdModel.Store.ВодителиSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="АвтомобилиSet" EntityType="BdModel.Store.АвтомобилиSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Путевые_листыSet" EntityType="BdModel.Store.Путевые_листыSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ВодителиАвтомобили" Association="BdModel.Store.ВодителиАвтомобили">
+      <End Role="Водители" EntitySet="ВодителиSet" />
+      <End Role="Автомобили" EntitySet="АвтомобилиSet" />
+    </AssociationSet>
+    <AssociationSet Name="Путевые_листыВодители" Association="BdModel.Store.Путевые_листыВодители">
+      <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
+      <End Role="Водители" EntitySet="ВодителиSet" />
+    </AssociationSet>
+    <AssociationSet Name="Путевые_листыАвтомобили" Association="BdModel.Store.Путевые_листыАвтомобили">
+      <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
+      <End Role="Автомобили" EntitySet="АвтомобилиSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ВодителиSet">
+    <Key>
+      <PropertyRef Name="Табельный_номер" />
+    </Key>
+    <Property Name="Табельный_номер" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Дата_взятия_на_работу" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="АвтомобилиSet">
+    <Key>
+      <PropertyRef Name="Регистрационный_номер" />
+    </Key>
+    <Property Name="Регистрационный_номер" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ВодителиТабельный_номер" Type="int" Nullable="false" />
+    <Property Name="Марка_авто" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Дата_выпуска" Type="datetime" Nullable="false" />
+    <Property Name="Путевые_листыНомер_путевого" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Путевые_листыSet">
+    <Key>
+      <PropertyRef Name="Номер_путевого" />
+    </Key>
+    <Property Name="Номер_путевого" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата_и_время_отправления" Type="datetime" Nullable="false" />
+    <Property Name="Показания_спидометра" Type="int" Nullable="true" />
+    <Property Name="Остаток_топлива" Type="int" Nullable="true" />
+    <Property Name="Остаток_топлива_при_приезде" Type="int" Nullable="true" />
+    <Property Name="Показания_спидометра_при_приезде" Type="int" Nullable="true" />
+    <Property Name="Марка_топлива" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Дата_время_возвращения" Type="datetime" Nullable="true" />
+    <Property Name="Количество_литров" Type="int" Nullable="true" />
+    <Property Name="Водители_Табельный_номер" Type="int" Nullable="false" />
+    <Property Name="Автомобили_Регистрационный_номер" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ВодителиАвтомобили">
+    <End Role="Водители" Type="BdModel.Store.ВодителиSet" Multiplicity="1" />
+    <End Role="Автомобили" Type="BdModel.Store.АвтомобилиSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="Табельный_номер" />
+      </Principal>
+      <Dependent Role="Автомобили">
+        <PropertyRef Name="ВодителиТабельный_номер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Путевые_листыВодители">
+    <End Role="Путевые_листы" Type="BdModel.Store.Путевые_листыSet" Multiplicity="*" />
+    <End Role="Водители" Type="BdModel.Store.ВодителиSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="Табельный_номер" />
+      </Principal>
+      <Dependent Role="Путевые_листы">
+        <PropertyRef Name="Водители_Табельный_номер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Путевые_листыАвтомобили">
+    <End Role="Путевые_листы" Type="BdModel.Store.Путевые_листыSet" Multiplicity="*" />
+    <End Role="Автомобили" Type="BdModel.Store.АвтомобилиSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Автомобили">
+        <PropertyRef Name="Регистрационный_номер" />
+      </Principal>
+      <Dependent Role="Путевые_листы">
+        <PropertyRef Name="Автомобили_Регистрационный_номер" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BdModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="BdModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ВодителиSet" EntityType="BdModel.Водители" />
+          <EntitySet Name="АвтомобилиSet" EntityType="BdModel.Автомобили" />
+          <EntitySet Name="Путевые_листыSet" EntityType="BdModel.Путевые_листы" />
+          <AssociationSet Name="ВодителиАвтомобили" Association="BdModel.ВодителиАвтомобили">
+            <End Role="Водители" EntitySet="ВодителиSet" />
+            <End Role="Автомобили" EntitySet="АвтомобилиSet" />
+          </AssociationSet>
+          <AssociationSet Name="Путевые_листыВодители" Association="BdModel.Путевые_листыВодители">
+            <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
+            <End Role="Водители" EntitySet="ВодителиSet" />
+          </AssociationSet>
+          <AssociationSet Name="Путевые_листыАвтомобили" Association="BdModel.Путевые_листыАвтомобили">
+            <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
+            <End Role="Автомобили" EntitySet="АвтомобилиSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Водители">
+          <Key>
+            <PropertyRef Name="Табельный_номер" />
+          </Key>
+          <Property Name="Табельный_номер" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Автомобили" Relationship="BdModel.ВодителиАвтомобили" FromRole="Водители" ToRole="Автомобили" />
+          <Property Name="ФИО" Type="String" Nullable="false" />
+          <Property Name="Дата_взятия_на_работу" Type="String" Nullable="false" />
+          <NavigationProperty Name="Путевые_листы" Relationship="BdModel.Путевые_листыВодители" FromRole="Водители" ToRole="Путевые_листы" />
+        </EntityType>
+        <EntityType Name="Автомобили">
+          <Key>
+            <PropertyRef Name="Регистрационный_номер" />
+          </Key>
+          <Property Name="Регистрационный_номер" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Водители" Relationship="BdModel.ВодителиАвтомобили" FromRole="Автомобили" ToRole="Водители" />
+          <Property Name="ВодителиТабельный_номер" Type="Int32" Nullable="false" />
+          <Property Name="Марка_авто" Type="String" Nullable="false" />
+          <Property Name="Дата_выпуска" Type="DateTime" Nullable="false" />
+          <Property Name="Путевые_листыНомер_путевого" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Путевые_листы" Relationship="BdModel.Путевые_листыАвтомобили" FromRole="Автомобили" ToRole="Путевые_листы" />
+        </EntityType>
+        <EntityType Name="Путевые_листы">
+          <Key>
+            <PropertyRef Name="Номер_путевого" />
+          </Key>
+          <Property Name="Номер_путевого" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Водители" Relationship="BdModel.Путевые_листыВодители" FromRole="Путевые_листы" ToRole="Водители" />
+          <Property Name="Дата_и_время_отправления" Type="DateTime" Nullable="false" />
+          <Property Name="Показания_спидометра" Type="Int32" Nullable="true" />
+          <Property Name="Остаток_топлива" Type="Int32" Nullable="true" />
+          <Property Name="Остаток_топлива_при_приезде" Type="Int32" Nullable="true" />
+          <Property Name="Показания_спидометра_при_приезде" Type="Int32" Nullable="true" />
+          <Property Name="Марка_топлива" Type="String" Nullable="true" />
+          <Property Name="Дата_время_возвращения" Type="DateTime" Nullable="true" />
+          <Property Name="Количество_литров" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Автомобили" Relationship="BdModel.Путевые_листыАвтомобили" FromRole="Путевые_листы" ToRole="Автомобили" />
+        </EntityType>
+        <Association Name="ВодителиАвтомобили">
+          <End Type="BdModel.Водители" Role="Водители" Multiplicity="1" />
+          <End Type="BdModel.Автомобили" Role="Автомобили" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Водители">
+              <PropertyRef Name="Табельный_номер" />
+            </Principal>
+            <Dependent Role="Автомобили">
+              <PropertyRef Name="ВодителиТабельный_номер" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Путевые_листыВодители">
+          <End Type="BdModel.Путевые_листы" Role="Путевые_листы" Multiplicity="*" />
+          <End Type="BdModel.Водители" Role="Водители" Multiplicity="1" />
+        </Association>
+        <Association Name="Путевые_листыАвтомобили">
+          <End Type="BdModel.Путевые_листы" Role="Путевые_листы" Multiplicity="*" />
+          <End Type="BdModel.Автомобили" Role="Автомобили" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BdModelStoreContainer" CdmEntityContainer="BdModelContainer">
+    <EntitySetMapping Name="ВодителиSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BdModel.Водители)">
+        <MappingFragment StoreEntitySet="ВодителиSet">
+          <ScalarProperty Name="Табельный_номер" ColumnName="Табельный_номер" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Дата_взятия_на_работу" ColumnName="Дата_взятия_на_работу" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="АвтомобилиSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BdModel.Автомобили)">
+        <MappingFragment StoreEntitySet="АвтомобилиSet">
+          <ScalarProperty Name="Регистрационный_номер" ColumnName="Регистрационный_номер" />
+          <ScalarProperty Name="ВодителиТабельный_номер" ColumnName="ВодителиТабельный_номер" />
+          <ScalarProperty Name="Марка_авто" ColumnName="Марка_авто" />
+          <ScalarProperty Name="Дата_выпуска" ColumnName="Дата_выпуска" />
+          <ScalarProperty Name="Путевые_листыНомер_путевого" ColumnName="Путевые_листыНомер_путевого" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Путевые_листыSet">
+      <EntityTypeMapping TypeName="IsTypeOf(BdModel.Путевые_листы)">
+        <MappingFragment StoreEntitySet="Путевые_листыSet">
+          <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
+          <ScalarProperty Name="Дата_и_время_отправления" ColumnName="Дата_и_время_отправления" />
+          <ScalarProperty Name="Показания_спидометра" ColumnName="Показания_спидометра" />
+          <ScalarProperty Name="Остаток_топлива" ColumnName="Остаток_топлива" />
+          <ScalarProperty Name="Остаток_топлива_при_приезде" ColumnName="Остаток_топлива_при_приезде" />
+          <ScalarProperty Name="Показания_спидометра_при_приезде" ColumnName="Показания_спидометра_при_приезде" />
+          <ScalarProperty Name="Марка_топлива" ColumnName="Марка_топлива" />
+          <ScalarProperty Name="Дата_время_возвращения" ColumnName="Дата_время_возвращения" />
+          <ScalarProperty Name="Количество_литров" ColumnName="Количество_литров" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Путевые_листыВодители" TypeName="BdModel.Путевые_листыВодители" StoreEntitySet="Путевые_листыSet">
+      <EndProperty Name="Водители">
+        <ScalarProperty Name="Табельный_номер" ColumnName="Водители_Табельный_номер" />
+      </EndProperty>
+      <EndProperty Name="Путевые_листы">
+        <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Путевые_листыАвтомобили" TypeName="BdModel.Путевые_листыАвтомобили" StoreEntitySet="Путевые_листыSet">
+      <EndProperty Name="Автомобили">
+        <ScalarProperty Name="Регистрационный_номер" ColumnName="Автомобили_Регистрационный_номер" />
+      </EndProperty>
+      <EndProperty Name="Путевые_листы">
+        <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

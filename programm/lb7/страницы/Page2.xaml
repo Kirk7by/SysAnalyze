@@ -11,20 +11,20 @@
         <Grid Margin="0,0,5.8,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="43.2"/>
+                <RowDefinition Height="59"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition Width="112*"/>
                 <ColumnDefinition Width="265*"/>
             </Grid.ColumnDefinitions>
-            <GridSplitter Margin="0,2,0.4,0.4" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
-            <Button x:Name="Статистика_по_топливу" Content="Статистистика по топливу" Margin="5,0,14.4,217.8" VerticalAlignment="Bottom" Grid.Column="1" Height="34" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Click="Статистика_по_топливу_Click"/>
-            <DataGrid Margin="4.6,25,1.2,1.8" Grid.Column="2"/>
-            <Label Content="Формирование отчетов" Margin="4.6,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
-            <Button x:Name="Сформированить_отчет" Content="Сформировать отчет" Margin="4.6,3.2,0.2,3" Background="#FF7E977D" BorderBrush="{x:Null}" Grid.Column="2" Grid.Row="1" Foreground="White" FontSize="18" Click="Сформированить_отчет_Click"/>
-            <Button x:Name="Отчет_о_работе_тс" Content="Отчет о работе ТС" Margin="5,0,14.4,256.8" VerticalAlignment="Bottom" Grid.Column="1" Height="34" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Click="Отчет_о_работе_тс_Click"/>
-            <DatePicker Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="23" Width="158"/>
+            <GridSplitter Margin="0,2,0,0" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
+            <Button x:Name="Статистика_по_топливу" Content="Статистистика по топливу" Margin="4,0,15,130" VerticalAlignment="Bottom" Grid.Column="1" Height="77" Background="#FFADC1A8" BorderBrush="{x:Null}" Foreground="White" Click="Статистика_по_топливу_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+            <DataGrid Margin="5,25,1,2" Grid.Column="2"/>
+            <Label Content="Формирование отчетов" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
+            <Button x:Name="Сформированить_отчет" Content="Сформировать отчет" Margin="5,3,0,3" Background="#FF7E977D" BorderBrush="{x:Null}" Grid.Column="2" Grid.Row="1" Foreground="White" FontSize="18" Click="Сформированить_отчет_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+            <Button x:Name="Отчет_о_работе_тс" Content="Отчет о работе ТС" Margin="4,0,15,214" VerticalAlignment="Bottom" Grid.Column="1" Height="75" Background="#FFADC1A8" BorderBrush="{x:Null}" Foreground="White" Click="Отчет_о_работе_тс_Click" Style="{DynamicResource DefaultButtonStyle}"/>
+            <DatePicker Grid.ColumnSpan="2" Margin="10,10,15,0" VerticalAlignment="Top" Height="23"/>
         </Grid>
 
     </Grid>

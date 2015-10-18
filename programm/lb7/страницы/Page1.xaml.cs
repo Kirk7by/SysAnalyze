@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DataBase;
 namespace lb7.страницы
 {
     /// <summary>
@@ -23,6 +23,10 @@ namespace lb7.страницы
         public Page1()
         {
             InitializeComponent();
+     /*       using (Model2Container bd = new Model2Container())
+            {
+                dataGrid.Items.Add(bd.Путевые_листыSet.ToList());
+            }*/
         }
 
         string NumberPutevogo1, NumberTabelnogo1, NumberAvto1;

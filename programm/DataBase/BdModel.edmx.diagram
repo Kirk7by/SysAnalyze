@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5020a13106a94323bcd45ad1dcb7433f" Name="Diagram1" >
+        <EntityTypeShape EntityType="BdModel.Водители" Width="1.5" PointX="2.375" PointY="4.5" />
+        <EntityTypeShape EntityType="BdModel.Автомобили" Width="2.875" PointX="10.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdModel.Путевые_листы" Width="4.375" PointX="5" PointY="0.625" />
+        <AssociationConnector Association="BdModel.ВодителиАвтомобили" />
+        <AssociationConnector Association="BdModel.Путевые_листыВодители" />
+        <AssociationConnector Association="BdModel.Путевые_листыАвтомобили" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

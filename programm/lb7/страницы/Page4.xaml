@@ -11,33 +11,33 @@
         <Grid Margin="0,0,5.8,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="43.2"/>
+                <RowDefinition Height="58"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition Width="112*"/>
                 <ColumnDefinition Width="265*"/>
             </Grid.ColumnDefinitions>
-            <GridSplitter Margin="0,2,0.4,0.4" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
-            <DataGrid Margin="4.6,25,1.2,1.8" Grid.Column="2"/>
-            <Label Content="Операции с автомобилями" Margin="4.6,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
-            <TextBox Height="23" Margin="5,40,14.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <TextBox Height="23" Margin="5,114,14.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <TextBox Height="23" Margin="5,163,14.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <Label Grid.ColumnSpan="2" Content="Регистрационный номер:" Margin="0,9,14.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="158"/>
-            <Label Grid.ColumnSpan="2" Content="Марка авто:" Margin="0,88,62.4,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="78"/>
-            <Label Grid.ColumnSpan="2" Content="Дата производства:" HorizontalAlignment="Right" Margin="0,137,39.4,0" VerticalAlignment="Top"/>
-            <Grid Margin="7.6,3.2,4.2,0" Grid.Column="2" Grid.Row="1">
+            <GridSplitter Margin="0,2,0,0" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
+            <DataGrid Margin="5,25,1,2" Grid.Column="2"/>
+            <Label Content="Операции с автомобилями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
+            <TextBox Height="23" Margin="5,40,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox Height="23" Margin="5,114,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox Height="23" Margin="5,163,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Label Grid.ColumnSpan="2" Content="Регистрационный номер:" Margin="0,9,14,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="158" Height="26"/>
+            <Label Grid.ColumnSpan="2" Content="Марка авто:" Margin="0,88,62,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="78" Height="26"/>
+            <Label Grid.ColumnSpan="2" Content="Дата производства:" HorizontalAlignment="Right" Margin="0,137,39,0" VerticalAlignment="Top" Height="26" Width="118"/>
+            <Grid Margin="8,3,4,0" Grid.Column="2" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="137*"/>
                     <ColumnDefinition Width="151*"/>
                     <ColumnDefinition Width="135*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="изменить_авто" Content="Изменить" Margin="0.2,0,0,3" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Grid.Column="1" Click="изменить_авто_Click"/>
-                <Button x:Name="добавить_авто" Content="Добавить" Margin="0,0,4.8,3" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Click="добавить_авто_Click"/>
-                <Button x:Name="удалить_авто" Content="Удалить" Margin="5,0,0.2,3" VerticalAlignment="Bottom" Height="37" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Grid.Column="2" Click="удалить_авто_Click"/>
+                <Button x:Name="изменить_авто" Content="Изменить" Margin="0,0,0,2.8" Background="#FFD3CAA2" BorderBrush="{x:Null}" Foreground="White" Grid.Column="1" Click="изменить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+                <Button x:Name="добавить_авто" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="{x:Null}" Foreground="White" Click="добавить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+                <Button x:Name="удалить_авто" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="{x:Null}" Foreground="White" Grid.Column="2" Click="удалить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
-            <Button x:Name="отобразить_машины" Content="Отобразить" Margin="5,3.2,14.4,3" Background="#FF8EF68D" BorderBrush="{x:Null}" Foreground="Black" Grid.ColumnSpan="2" Grid.Row="1" Click="отобразить_машины_Click"/>
+            <Button x:Name="отобразить_машины" Content="Отобразить" Margin="5,3,14,3" Background="#FFBDBBBB" BorderBrush="{x:Null}" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="отобразить_машины_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
         </Grid>
 
     </Grid>
