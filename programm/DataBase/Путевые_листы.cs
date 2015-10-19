@@ -23,8 +23,10 @@ namespace DataBase
         public string Марка_топлива { get; set; }
         public Nullable<System.DateTime> Дата_время_возвращения { get; set; }
         public Nullable<int> Количество_литров { get; set; }
+        public string АвтомобилиРегистрационный_номер { get; set; }
+        public int ВодителиТабельный_номер { get; set; }
     
-        public virtual Водители Водители { get; set; }
         public virtual Автомобили Автомобили { get; set; }
+        public virtual Водители Водители { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace lb7.страницы
         public Page4()
         {
             InitializeComponent();
+
         }
 
         private void отобразить_машины_Click(object sender, RoutedEventArgs e)

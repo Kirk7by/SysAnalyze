@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5020a13106a94323bcd45ad1dcb7433f" Name="Diagram1" >
         <EntityTypeShape EntityType="BdModel.Водители" Width="1.5" PointX="2.375" PointY="4.5" />
-        <EntityTypeShape EntityType="BdModel.Автомобили" Width="2.875" PointX="10.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdModel.Автомобили" Width="2.875" PointX="9.875" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BdModel.Путевые_листы" Width="4.375" PointX="5" PointY="0.625" />
+        <AssociationConnector Association="BdModel.АвтомобилиПутевые_листы" />
         <AssociationConnector Association="BdModel.ВодителиАвтомобили" />
-        <AssociationConnector Association="BdModel.Путевые_листыВодители" />
-        <AssociationConnector Association="BdModel.Путевые_листыАвтомобили" />
+        <AssociationConnector Association="BdModel.ВодителиПутевые_листы" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

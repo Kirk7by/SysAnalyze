@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="621"
-	Title="Page3" Uid="3">
+	Title="Page3" Uid="3" Loaded="Page_Loaded">
+    
 
     <Grid>
         <Grid Margin="0,0,5.8,0">
@@ -19,11 +20,28 @@
                 <ColumnDefinition Width="265*"/>
             </Grid.ColumnDefinitions>
             <GridSplitter Margin="0,2,0,0" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2"/>
-            <DataGrid Margin="5,25,1,2" Grid.Column="2"/>
+
+            
+            <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True"  
+                RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                   <DataGridTextColumn x:Name="Табельный_номерColumn" Binding="{Binding Табельный_номер}"  
+                                Header="Табельный_номер" />
+                    <DataGridTextColumn x:Name="ФИОColumn" Binding="{Binding ФИО}"  
+                                Header="ФИО" />
+                    <DataGridTextColumn x:Name="Дата_взятия_на_работуColumn" Binding="{Binding Дата_взятия_на_работу}"  
+                                Header="Дата_взятия_на_работу" />
+                </DataGrid.Columns>
+               
+            </DataGrid>
+
+
+
+
             <Label Content="Операции с водителями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
-            <TextBox Height="23" Margin="5,40,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <TextBox Height="23" Margin="5,114,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <TextBox Height="23" Margin="5,163,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="TbTabNumber" Height="23" Margin="5,40,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" KeyUp="TbTabNumber_KeyUp"/>
+            <TextBox x:Name="tbName" Height="23" Margin="5,114,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" KeyUp="tbName_KeyUp"/>
+            <TextBox x:Name="tbDataEmployment" Height="23" Margin="5,163,14,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
             <Label Grid.ColumnSpan="2" Content="Табельный номер:" Margin="0,9,39,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="112" Height="26"/>
             <Label Grid.ColumnSpan="2" Content="ФИО:" Margin="0,88,84,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" Height="26"/>
             <Label Grid.ColumnSpan="2" Content="Дата взятия:" HorizontalAlignment="Right" Margin="0,137,62,0" VerticalAlignment="Top" Height="26" Width="77"/>

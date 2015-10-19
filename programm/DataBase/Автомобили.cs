@@ -21,13 +21,12 @@ namespace DataBase
         }
     
         public string Регистрационный_номер { get; set; }
-        public int ВодителиТабельный_номер { get; set; }
         public string Марка_авто { get; set; }
         public System.DateTime Дата_выпуска { get; set; }
-        public int Путевые_листыНомер_путевого { get; set; }
+        public Nullable<int> ВодителиТабельный_номер { get; set; }
     
-        public virtual Водители Водители { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Путевые_листы> Путевые_листы { get; set; }
+        public virtual Водители Водители { get; set; }
     }
 }

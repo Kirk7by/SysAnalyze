@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/17/2015 02:08:52
+-- Date Created: 10/19/2015 23:15:36
 -- Generated from EDMX file: C:\my program Projects\SysAnalyze\programm\DataBase\BdModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [DataBase.Model1];
+USE [SysAnalyze];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -24,7 +24,7 @@ IF OBJECT_ID(N'[dbo].[FK_Путевые_листыВодители]', 'F') IS NO
     ALTER TABLE [dbo].[Путевые_листыSet] DROP CONSTRAINT [FK_Путевые_листыВодители];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Путевые_листыАвтомобили]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[АвтомобилиSet] DROP CONSTRAINT [FK_Путевые_листыАвтомобили];
+    ALTER TABLE [dbo].[Путевые_листыSet] DROP CONSTRAINT [FK_Путевые_листыАвтомобили];
 GO
 
 -- --------------------------------------------------
@@ -48,18 +48,17 @@ GO
 -- Creating table 'ВодителиSet'
 CREATE TABLE [dbo].[ВодителиSet] (
     [Табельный_номер] int IDENTITY(1,1) NOT NULL,
-    [ФИО] nvarchar(max)  NOT NULL,
-    [Дата_взятия_на_работу] nvarchar(max)  NOT NULL
+    [ФИО] nvarchar(100)  NOT NULL,
+    [Дата_взятия_на_работу] datetime  NOT NULL
 );
 GO
 
 -- Creating table 'АвтомобилиSet'
 CREATE TABLE [dbo].[АвтомобилиSet] (
-    [Регистрационный_номер] nvarchar(50)  NOT NULL,
-    [ВодителиТабельный_номер] int  NOT NULL,
+    [Регистрационный_номер] nvarchar(12)  NOT NULL,
     [Марка_авто] nvarchar(max)  NOT NULL,
     [Дата_выпуска] datetime  NOT NULL,
-    [Путевые_листыНомер_путевого] int  NOT NULL
+    [ВодителиТабельный_номер] int  NULL
 );
 GO
 
@@ -71,11 +70,11 @@ CREATE TABLE [dbo].[Путевые_листыSet] (
     [Остаток_топлива] int  NULL,
     [Остаток_топлива_при_приезде] int  NULL,
     [Показания_спидометра_при_приезде] int  NULL,
-    [Марка_топлива] nvarchar(max)  NULL,
+    [Марка_топлива] nvarchar(20)  NULL,
     [Дата_время_возвращения] datetime  NULL,
     [Количество_литров] int  NULL,
-    [Водители_Табельный_номер] int  NOT NULL,
-    [Автомобили_Регистрационный_номер] nvarchar(max)  NOT NULL
+    [АвтомобилиРегистрационный_номер] nvarchar(12)  NOT NULL,
+    [ВодителиТабельный_номер] int  NOT NULL
 );
 GO
 
@@ -105,6 +104,18 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
+-- Creating foreign key on [АвтомобилиРегистрационный_номер] in table 'Путевые_листыSet'
+ALTER TABLE [dbo].[Путевые_листыSet]
+ADD CONSTRAINT [FK_АвтомобилиПутевые_листы]
+    FOREIGN KEY ([АвтомобилиРегистрационный_номер])
+    REFERENCES [dbo].[АвтомобилиSet]
+        ([Регистрационный_номер])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_АвтомобилиПутевые_листы'
+
+
 -- Creating foreign key on [ВодителиТабельный_номер] in table 'АвтомобилиSet'
 ALTER TABLE [dbo].[АвтомобилиSet]
 ADD CONSTRAINT [FK_ВодителиАвтомобили]
@@ -115,42 +126,33 @@ ADD CONSTRAINT [FK_ВодителиАвтомобили]
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ВодителиАвтомобили'
-CREATE INDEX [IX_FK_ВодителиАвтомобили]
-ON [dbo].[АвтомобилиSet]
-    ([ВодителиТабельный_номер]);
-GO
 
--- Creating foreign key on [Водители_Табельный_номер] in table 'Путевые_листыSet'
+
+-- Creating foreign key on [ВодителиТабельный_номер] in table 'Путевые_листыSet'
 ALTER TABLE [dbo].[Путевые_листыSet]
-ADD CONSTRAINT [FK_Путевые_листыВодители]
-    FOREIGN KEY ([Водители_Табельный_номер])
+ADD CONSTRAINT [FK_ВодителиПутевые_листы]
+    FOREIGN KEY ([ВодителиТабельный_номер])
     REFERENCES [dbo].[ВодителиSet]
         ([Табельный_номер])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_Путевые_листыВодители'
-CREATE INDEX [IX_FK_Путевые_листыВодители]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ВодителиПутевые_листы'
+CREATE INDEX [IX_FK_ВодителиПутевые_листы]
 ON [dbo].[Путевые_листыSet]
-    ([Водители_Табельный_номер]);
-GO
-
-
--- Creating foreign key on [Автомобили_Регистрационный_номер] in table 'Путевые_листыSet'
-ALTER TABLE [dbo].[Путевые_листыSet]
-ADD CONSTRAINT [FK_Путевые_листыАвтомобили]
-    FOREIGN KEY ([Автомобили_Регистрационный_номер])
-    REFERENCES [dbo].[АвтомобилиSet]
-        ([Регистрационный_номер])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Путевые_листыАвтомобили'
-CREATE INDEX [IX_FK_Путевые_листыАвтомобили]
-ON [dbo].[Путевые_листыSet]
-    ([Автомобили_Регистрационный_номер]);
+    ([ВодителиТабельный_номер]);
 GO
 
 -- --------------------------------------------------
 -- Script has ended
+
+CREATE INDEX [IX_FK_АвтомобилиПутевые_листы]
+ON [dbo].[Путевые_листыSet]
+    ([АвтомобилиРегистрационный_номер]);
+GO
+
+CREATE INDEX [IX_FK_ВодителиАвтомобили]
+ON [dbo].[АвтомобилиSet]
+    ([ВодителиТабельный_номер]);
+GO
 -- --------------------------------------------------

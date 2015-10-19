@@ -23,7 +23,7 @@ namespace DataBase
     
         public int Табельный_номер { get; set; }
         public string ФИО { get; set; }
-        public string Дата_взятия_на_работу { get; set; }
+        public System.DateTime Дата_взятия_на_работу { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Автомобили> Автомобили { get; set; }
