@@ -141,5 +141,11 @@ namespace lb7.страницы
         {
             отобразить_конкретного_водителя_FNAME();
         }
+
+        private void dGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            MessageBox.Show(Convert.ToString(dGrid.SelectedCells));
+        }
     }
 }

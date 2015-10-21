@@ -23,7 +23,7 @@
 
             
             <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True"  
-                RowDetailsVisibilityMode="VisibleWhenSelected">
+                RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="dGrid_SelectionChanged">
                 <DataGrid.Columns>
                    <DataGridTextColumn x:Name="Табельный_номерColumn" Binding="{Binding Табельный_номер}"  
                                 Header="Табельный_номер" />
