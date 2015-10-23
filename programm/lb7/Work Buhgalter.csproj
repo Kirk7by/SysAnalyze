@@ -156,6 +156,9 @@
     <Resource Include="media\Auto.png" />
     <Resource Include="media\driver.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\clean_brush-512.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

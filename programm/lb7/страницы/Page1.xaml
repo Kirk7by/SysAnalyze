@@ -69,8 +69,8 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-    
-    
+
+
     <Grid>
         <Grid Margin="0,0,5.8,0">
             <Grid.RowDefinitions>
@@ -82,7 +82,7 @@
                 <ColumnDefinition x:Name="columnVievbox" Width="118*"/>
                 <ColumnDefinition Width="389*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dGrid" Margin="5,25,1,5" Grid.Column="2" BorderBrush="{x:Null}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" FontSize="14.667">
+            <DataGrid x:Name="dGrid" Margin="5,25,1,5" Grid.Column="2" BorderBrush="{x:Null}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" FontSize="14.667" SelectionChanged="dGrid_SelectionChanged">
 
                 <DataGrid.Background>
                     <SolidColorBrush Color="#B2F0F0F0" Opacity="0.8"/>
@@ -112,8 +112,8 @@
                     <DataGridTextColumn x:Name="Марка_топливаColumn" Binding="{Binding Марка_топлива}"  CellStyle="{StaticResource cell3Style}"  Width="64"
                                 Header="Марка топлива" />
                     <DataGridTextColumn x:Name="Количество_литровColumn" Binding="{Binding Количество_литров}"  CellStyle="{StaticResource cell3Style}" Width="70" 
-                                Header="Ко-во литров" />      
-                    
+                                Header="Ко-во литров" />
+
                 </DataGrid.Columns>
 
             </DataGrid>
@@ -134,7 +134,7 @@
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFEAE8DB" Margin="1,-2,1,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,252,0,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFACF5E5" Margin="0,125,0,0"/>
-                    <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="88,6,29,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="88,6,40,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Путевой №" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="24" Foreground="#FF1900FF" FontSize="14" FontWeight="Bold"/>
                     <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
@@ -187,10 +187,14 @@
                     <DatePicker x:Name="tb3DateTime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,323,0,0" Width="105"/>
                     <ComboBox x:Name="tb1NumberAvto" HorizontalAlignment="Left" Margin="74,71,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded"/>
                     <ComboBox x:Name="tb1NumberTabelnogo" HorizontalAlignment="Left" Margin="74,41,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded"/>
+                    <Button x:Name="Clear_update" Content="" HorizontalAlignment="Left" Margin="160,6,0,0" VerticalAlignment="Top" Width="25" Height="26" RenderTransformOrigin="0.449,0.469" Click="Clear_update_Click" BorderBrush="#FFB8B8B8" Foreground="{x:Null}" BorderThickness="3,3,3,5" Opacity="0.8" Background="#FFB8C1D1" Style="{DynamicResource buttonSetupStyle}">
+                        <Button.OpacityMask>
+                            <ImageBrush Stretch="Uniform" ImageSource="/lb7;component/media/clean_brush-512.png"/>
+                        </Button.OpacityMask>
+                    </Button>
                 </Grid>
             </Viewbox>
             <GridSplitter Width="13" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2" BorderBrush="White" BorderThickness="2.3,0,1,0"/>
-            <Button x:Name="Clear_update" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="187,2,0,0" VerticalAlignment="Top" Width="49" Height="32" RenderTransformOrigin="0.449,0.469" Click="Clear_update_Click"/>
         </Grid>
 
     </Grid>
