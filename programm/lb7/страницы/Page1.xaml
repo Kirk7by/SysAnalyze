@@ -7,6 +7,70 @@
       d:DesignHeight="585" d:DesignWidth="1020"
 	Title="Page1">
 
+    <Page.Resources>
+        <Style x:Key="cell1Style" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#FFEAE8DB"></Setter>
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="true" >
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FontSize" Value="22" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF6D5970"  />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="White"  />
+                        </Setter.Value>
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cell2Style" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#FFACF5E5"></Setter>
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="true" >
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF6D5970"  />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="White"  />
+                        </Setter.Value>
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cell3Style" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#FFADF7A0"></Setter>
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="true" >
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF6D5970"  />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="White"  />
+                        </Setter.Value>
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    
+    
     <Grid>
         <Grid Margin="0,0,5.8,0">
             <Grid.RowDefinitions>
@@ -18,7 +82,41 @@
                 <ColumnDefinition x:Name="columnVievbox" Width="118*"/>
                 <ColumnDefinition Width="389*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dataGrid" Margin="5,25,1,5" Grid.Column="2"/>
+            <DataGrid x:Name="dGrid" Margin="5,25,1,5" Grid.Column="2" BorderBrush="{x:Null}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" FontSize="14.667">
+
+                <DataGrid.Background>
+                    <SolidColorBrush Color="#B2F0F0F0" Opacity="0.8"/>
+                </DataGrid.Background>
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="Номер_путевогоColumn"   Binding="{Binding Номер_путевого}" 
+                                Header="№" CellStyle="{StaticResource cell1Style}"  />
+                    <DataGridTextColumn x:Name="ВодителиТабельный_номерColumn" Binding="{Binding ВодителиТабельный_номер}" CellStyle="{StaticResource cell1Style}"  
+                                Header="Таб. номер водителя" />
+                    <DataGridTextColumn x:Name="АвтомобилиРегистрационный_номерColumn" Binding="{Binding АвтомобилиРегистрационный_номер}"   CellStyle="{StaticResource cell1Style}"
+                                Header="Рег.номер авто" />
+
+                    <DataGridTextColumn x:Name="Дата_и_время_отправленияColumn"  Binding="{Binding Дата_и_время_отправления}" CellStyle="{StaticResource cell2Style}"   
+                                Header="Отправка время" >
+
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn x:Name="Показания_спидометраColumn" Binding="{Binding Показания_спидометра}"   CellStyle="{StaticResource cell2Style}"   
+                                Header="Отправка спидометр" />
+                    <DataGridTextColumn x:Name="Остаток_топливаColumn" Binding="{Binding Остаток_топлива}"  CellStyle="{StaticResource cell2Style}"   
+                                Header="Отправка топливо" />
+
+                    <DataGridTextColumn x:Name="Остаток_топлива_при_приездеColumn" Binding="{Binding Остаток_топлива_при_приезде}"  CellStyle="{StaticResource cell3Style}"   
+                                Header="Приезд топливо" />
+                    <DataGridTextColumn x:Name="Показания_спидометра_при_приездеColumn" Binding="{Binding Показания_спидометра_при_приезде}"  CellStyle="{StaticResource cell3Style}"  
+                                Header="Приезд спидометр" />
+                    <DataGridTextColumn x:Name="Марка_топливаColumn" Binding="{Binding Марка_топлива}"  CellStyle="{StaticResource cell3Style}"  Width="64"
+                                Header="Марка топлива" />
+                    <DataGridTextColumn x:Name="Количество_литровColumn" Binding="{Binding Количество_литров}"  CellStyle="{StaticResource cell3Style}" Width="70" 
+                                Header="Ко-во литров" />      
+                    
+                </DataGrid.Columns>
+
+            </DataGrid>
             <Label Content="Информация о путевых листах" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
             <Grid Margin="5,0,0,-3" Grid.Column="2" Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -33,13 +131,11 @@
             <Viewbox x:Name="Vievbox1" Margin="0,2,0,0" Grid.ColumnSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2" Stretch="Fill">
                 <Grid x:Name="gridView" Height="435" VerticalAlignment="Top" Width="197">
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="54" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,379,0,0"/>
-                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFF8D8FF" Margin="1,-2,1,0"/>
+                    <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFEAE8DB" Margin="1,-2,1,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,252,0,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFACF5E5" Margin="0,125,0,0"/>
                     <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="88,6,29,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Путевой №" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="24" Foreground="#FF1900FF" FontSize="14" FontWeight="Bold"/>
-                    <TextBox x:Name="tb1NumberTabelnogo" Height="26" Margin="74,38,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
-                    <TextBox x:Name="tb1NumberAvto" Height="26" Margin="74,67,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Табельный:" HorizontalAlignment="Left" Margin="5,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Foreground="#FF1900FF"/>
@@ -48,7 +144,7 @@
                     <Border BorderThickness="1" Height="27" Margin="0,98,-1,0" VerticalAlignment="Top">
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFF8D8FF"/>
+                                <GradientStop Color="#FFEAE8DB"/>
                                 <GradientStop Color="#FFACF5E5" Offset="1"/>
                                 <GradientStop Color="White" Offset="0.493"/>
                             </LinearGradientBrush>
@@ -56,13 +152,11 @@
                         <Label Content="Информация при отъезде" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,64.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
                     </Border>
                     <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
-                    <TextBox x:Name="tb2DateTime" Height="26" Margin="82,196,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
                     <TextBox x:Name="tb3OstTopliva" Height="26" Margin="80,256,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <TextBox x:Name="tb3PokazSpidometra" Height="26" Margin="80,287,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Остаток&#xA;Топлива:" HorizontalAlignment="Left" Margin="5,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Height="34"/>
                     <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
-                    <TextBox x:Name="tb3DateTime" Height="26" Margin="78,322,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
                     <Border BorderThickness="1" Height="27" Margin="1,225,-1,0" VerticalAlignment="Top">
                         <Border.Background>
@@ -89,9 +183,14 @@
                     <Label Content="Марка топлива:" HorizontalAlignment="Left" Margin="5,384,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="16" FontSize="10"/>
                     <Label Content="Ко-во литров:" HorizontalAlignment="Left" Margin="5,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="16" FontSize="10"/>
                     <TextBox x:Name="tb4KolvoLitrov" Height="20" Margin="91,405,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <DatePicker x:Name="tb2DateTime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,196,0,0" Width="103"/>
+                    <DatePicker x:Name="tb3DateTime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,323,0,0" Width="105"/>
+                    <ComboBox x:Name="tb1NumberAvto" HorizontalAlignment="Left" Margin="74,71,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded"/>
+                    <ComboBox x:Name="tb1NumberTabelnogo" HorizontalAlignment="Left" Margin="74,41,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded"/>
                 </Grid>
             </Viewbox>
             <GridSplitter Width="13" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2" BorderBrush="White" BorderThickness="2.3,0,1,0"/>
+            <Button x:Name="Clear_update" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="187,2,0,0" VerticalAlignment="Top" Width="49" Height="32" RenderTransformOrigin="0.449,0.469" Click="Clear_update_Click"/>
         </Grid>
 
     </Grid>

@@ -17,20 +17,21 @@
             <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="image" Source="/lb7;component/media/Auto.png" Grid.Row="1" Stretch="Fill"/>
+        <Image x:Name="image" Source="/lb7;component/media/Auto.png" Grid.Row="1"/>
 
         <Grid Margin="0,0,6,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="64"/>
+                <RowDefinition Height="68"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="112*"/>
-                <ColumnDefinition Width="265*"/>
+                <ColumnDefinition Width="61*"/>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="123*"/>
             </Grid.ColumnDefinitions>
             <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True" IsReadOnly="True" 
-        		RowDetailsVisibilityMode="VisibleWhenSelected" Style="{DynamicResource DataGridStyle2}" SelectionChanged="dGrid_SelectionChanged" Background="#B2F0F0F0">
+        		RowDetailsVisibilityMode="VisibleWhenSelected" Style="{DynamicResource DataGridStyle2}" SelectionChanged="dGrid_SelectionChanged" Background="#B2F0F0F0" Grid.ColumnSpan="2" BorderBrush="{x:Null}" HeadersVisibility="Column">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="ColumnРегистрационный_номер"  Binding="{Binding Регистрационный_номер}"  
                 		Header="Регистрационный номер" />
@@ -42,31 +43,32 @@
                 		Header="Табельный водителя" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Операции с автомобилями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
-            <Grid Margin="8,3,4,0" Grid.Column="2" Grid.Row="1">
+            <Label Content="Операции с автомобилями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FF5D9993"/>
+            <Grid Margin="8,3,4,0" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="137*"/>
                     <ColumnDefinition Width="151*"/>
                     <ColumnDefinition Width="135*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="изменить_авто" Content="Изменить" Margin="0,0,0,2.8" Background="#FFD3CAA2" BorderBrush="{x:Null}" Foreground="White" Grid.Column="1" Click="изменить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
-                <Button x:Name="добавить_авто" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="{x:Null}" Foreground="White" Click="добавить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
-                <Button x:Name="удалить_авто" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="{x:Null}" Foreground="White" Grid.Column="2" Click="удалить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+                <Button x:Name="изменить_авто" Content="Изменить" Margin="0,0,0,2.8" Background="#FFD3CAA2" BorderBrush="White" Foreground="White" Grid.Column="1" Click="изменить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+                <Button x:Name="добавить_авто" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="White" Foreground="White" Click="добавить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+                <Button x:Name="удалить_авто" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="White" Foreground="White" Grid.Column="2" Click="удалить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
-            <Button x:Name="Обновить_почистить" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FFB88C6E" BorderBrush="{x:Null}" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="Обновить_почистить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
-            <Viewbox StretchDirection="UpOnly" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" Stretch="Fill">
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#CCEED9CB" Width="158">
-                    <TextBox x:Name="TbAutoNumber" Height="23" Margin="5,25,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbAutoNumber_KeyUp" PreviewTextInput="TbAutoNumber_PreviewTextInput" FontSize="13.333" MaxLength="9"/>
-                    <TextBox x:Name="tbMark" Height="22" Margin="5,75,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="tbMark_KeyUp" FontSize="13.333"/>
+            <Button x:Name="Обновить_почистить" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FF9A92AC" BorderBrush="White" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="Обновить_почистить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3,4,3,3"/>
+            <Viewbox StretchDirection="UpOnly" HorizontalAlignment="Right" Grid.ColumnSpan="2" Stretch="Fill" Margin="0,0,0,1">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#CCC1B5AE" Width="158">
+                    <TextBox x:Name="TbAutoNumber" Height="23" Margin="5,25,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbAutoNumber_KeyUp" PreviewTextInput="TbAutoNumber_PreviewTextInput" FontSize="13.333" MaxLength="9" Background="#B2FFFFFF" BorderBrush="{x:Null}"/>
+                    <TextBox x:Name="tbMark" Height="22" Margin="5,66,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="tbMark_KeyUp" FontSize="13.333" BorderBrush="{x:Null}" Background="#B2FFFFFF"/>
                     <Label Content="Рег. номер авто:" VerticalAlignment="Top" Height="17" HorizontalAlignment="Left" Width="140" Foreground="#FF5D9993" Margin="5,8,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
-                    <DatePicker x:Name="dataPick" HorizontalAlignment="Left" Margin="5,125,0,79" Width="140" FontSize="18.667"/>
-                    <Label Content="Марка авто:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="124" Foreground="#FF5D9993" Margin="5,57,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
-                    <Label Content="Дата выпуска:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="124" Foreground="#FF5D9993" Margin="5,107,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
-                    <Label Content="Таб. водителя:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="134" Foreground="#FF5D9993" Margin="5,187,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
-                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="5,205,0,0" VerticalAlignment="Top" Width="139" Loaded="comboBox_Loaded"/>
+                    <DatePicker x:Name="dataPick" HorizontalAlignment="Left" Margin="4,105,0,99" Width="140" FontSize="18.667" BorderBrush="{x:Null}"/>
+                    <Label Content="Марка авто:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="124" Foreground="#FF5D9993" Margin="5,48,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
+                    <Label Content="Дата выпуска:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="124" Foreground="#FF5D9993" Margin="5,87,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
+                    <Label Content="Таб. водителя:" VerticalAlignment="Top" Height="18" HorizontalAlignment="Left" Width="134" Foreground="#FF5D9993" Margin="5,157,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="5,175,0,0" VerticalAlignment="Top" Width="139" Loaded="comboBox_Loaded" BorderBrush="{x:Null}">
+                    </ComboBox>
                 </Grid>
             </Viewbox>
-            <GridSplitter Width="11" Grid.Column="1"  Background="#FFB88C6E" Grid.RowSpan="2" BorderBrush="White" BorderThickness="3,0,0,0"/>
+            <GridSplitter Width="14" Grid.Column="1"  Background="#CC9A92AC" Grid.RowSpan="2" BorderBrush="White" BorderThickness="3,0,0,0" Opacity="0.8"/>
         </Grid>
 
     </Grid>

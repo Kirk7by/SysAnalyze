@@ -38,8 +38,6 @@ namespace lb7.страницы
             {
                 using (BdModelContainer _context = new BdModelContainer())
                 {
-
-              //      dGrid.ItemsSource = _context.ВодителиSet.ToList();
                     Lvod= _context.ВодителиSet.ToList();
                     dGrid.ItemsSource = Lvod.ToList();
                 }

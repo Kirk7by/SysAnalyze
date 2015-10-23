@@ -18,48 +18,21 @@ namespace lb7.страницы
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Page1 : Page, IActionsBdForms
     {
+        List<Путевые_листы> Lput = new List<Путевые_листы>();
         public Page1()
         {
             InitializeComponent();
-     /*       using (Model2Container bd = new Model2Container())
-            {
-                dataGrid.Items.Add(bd.Путевые_листыSet.ToList());
-            }*/
+            Clear_update_Click(null, null);
         }
 
-        string NumberPutevogo1, NumberTabelnogo1, NumberAvto1;
-        private void bbs_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-        void добавить_путевой_лист()
-        {
-            if(tb1NumberAvto.Text!="" && tb1NumberPutevogo.Text!="" && tb1NumberTabelnogo.Text!="")
-            {
-                NumberPutevogo1 = tb1NumberAvto.Text;
-                NumberTabelnogo1 = tb1NumberPutevogo.Text;
-                NumberAvto1 = tb1NumberTabelnogo.Text;
-            }
-        }
-        void изменить_путевой_лист()
-        {
 
-        }
-        void удалить_путевой_лист()
-        {
-
-        }
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            добавить_путевой_лист();
+            ADD();
         }
 
-        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-          
-        }
 
         private void upd_Click(object sender, RoutedEventArgs e)
         {
@@ -71,6 +44,74 @@ namespace lb7.страницы
 
         }
 
+        public void DataGridUpdateDate()
+        {
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    Lput = _context.Путевые_листыSet.ToList();
+                    dGrid.ItemsSource = Lput.ToList();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Ошибка выгрузки таблицы: " + ex.Message); }
+        }
+
+        public void ADD()
+        {
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    var put = new Путевые_листы() { Номер_путевого=int.Parse(tb1NumberPutevogo.Text), ВодителиТабельный_номер=int.Parse(tb1NumberTabelnogo.Text),
+                    АвтомобилиРегистрационный_номер=tb1NumberAvto.Text,Показания_спидометра=int.Parse(tb2PokazSpidometra.Text), Остаток_топлива=int.Parse(tb2OstTopliva.Text),
+                    Дата_и_время_отправления=Convert.ToDateTime(tb2DateTime.Text)};
+                    _context.Путевые_листыSet.Add(put);
+                    _context.SaveChanges();
+                    DataGridUpdateDate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Что-то пошло не так" + ex.Message);
+            }
+        }
+
+        public void UPD()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DEL()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Clear_update_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridUpdateDate();
+            tb2DateTime.SelectedDate = DateTime.Today;
+            tb3DateTime.SelectedDate = DateTime.Today;
+        }
+
+        private void tb1NumberTabelnogotb1NumberAvto_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    List<Водители> vod = _context.ВодителиSet.ToList();
+                    tb1NumberTabelnogo.ItemsSource = from v in vod
+                                           select v.Табельный_номер;
+                    List<Автомобили> avt = _context.АвтомобилиSet.ToList();
+                    tb1NumberAvto.ItemsSource = from v in avt
+                                                select v.Регистрационный_номер;
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Ошибка выгрузки таблицы: " + ex.Message); }
+        }
 
     }
 }

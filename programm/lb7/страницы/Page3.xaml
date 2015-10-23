@@ -26,8 +26,8 @@
             <Image x:Name="image" Margin="0,0,0,10" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Row="1" Source="/lb7;component/media/driver.png" Stretch="Fill"/>
 
 
-            <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True"  
-                RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="dGrid_SelectionChanged" IsReadOnly="True" Style="{DynamicResource DataGridStyle2}" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True"  Opacity="0.9"
+                RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="dGrid_SelectionChanged" IsReadOnly="True" Style="{DynamicResource DataGridStyle2}" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderThickness="0" HeadersVisibility="Column">
                 <DataGrid.Background>
                     <SolidColorBrush Color="#B2F0F0F0" Opacity="0.8"/>
                 </DataGrid.Background>
@@ -45,7 +45,7 @@
 
 
 
-            <Label Content="Операции с водителями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Label Content="Операции с водителями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FF746E58"/>
             <Grid Margin="8,3,4,0" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="137*"/>
@@ -58,16 +58,23 @@
             </Grid>
             <Button x:Name="Обновить_и_почистить" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FF999273" BorderBrush="White" Foreground="White" Grid.ColumnSpan="2" Grid.Row="2" Click="Обновить_и_почистить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             <Viewbox Grid.ColumnSpan="2" Margin="-4,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Stretch="Fill" StretchDirection="UpOnly" Grid.RowSpan="2">
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#CCE4DBB5">
-                    <TextBox x:Name="TbTabNumber" Height="23" Margin="5,27,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbTabNumber_KeyUp" PreviewTextInput="TbTabNumber_PreviewTextInput" FontSize="13.333" MaxLength="9"/>
-                    <TextBox x:Name="tbName" Margin="5,72,0,0" TextWrapping="Wrap" KeyUp="tbName_KeyUp" FontSize="13.333" HorizontalAlignment="Left" Width="120" Height="53" VerticalAlignment="Top"/>
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#E5E4DBB5">
+                    <TextBox x:Name="TbTabNumber" Height="23" Margin="5,27,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbTabNumber_KeyUp" PreviewTextInput="TbTabNumber_PreviewTextInput" FontSize="13.333" MaxLength="9" Background="#7FFFFFFF" BorderBrush="{x:Null}" Foreground="#FF045B1C"/>
+                    <TextBox x:Name="tbName" Margin="5,72,0,0" TextWrapping="Wrap" KeyUp="tbName_KeyUp" FontSize="13.333" HorizontalAlignment="Left" Width="120" Height="53" VerticalAlignment="Top" Background="#7BFFFFFF" BorderBrush="{x:Null}" Foreground="#FF045B1C"/>
                     <Label Content="Табельный номер:" VerticalAlignment="Top" Height="18" FontSize="13.333" HorizontalAlignment="Left" Width="132" Foreground="#FF746E58" Margin="5,9,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
                     <Label Content="ФИО:" Margin="5,53,0,0" VerticalAlignment="Top" Height="19" FontSize="13.333" HorizontalAlignment="Left" Width="49" Foreground="#FF746E58" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
-                    <DatePicker x:Name="dataPick" HorizontalAlignment="Left" Margin="5,191,0,13" Width="134" FontSize="18.667"/>
+                    <DatePicker x:Name="dataPick" HorizontalAlignment="Left" Margin="5,191,0,13" Width="124" FontSize="18.667" BorderBrush="{x:Null}"/>
                     <Label Content="Дата взятия:" Margin="5,172,0,0" VerticalAlignment="Top" Height="19" FontSize="13.333" HorizontalAlignment="Left" Width="113" Foreground="#FF746E58" Padding="0" FontWeight="Bold" FontStyle="Italic"/>
                 </Grid>
             </Viewbox>
-            <GridSplitter Width="13" Grid.Column="1" Background="#FFBFAF66" Grid.RowSpan="3" BorderThickness="4,0,0,0" BorderBrush="White"/>
+            <GridSplitter Width="14" Grid.Column="1" Grid.RowSpan="3" BorderThickness="4,0,0,0">
+                <GridSplitter.BorderBrush>
+                    <SolidColorBrush Color="White" Opacity="0.7"/>
+                </GridSplitter.BorderBrush>
+                <GridSplitter.Background>
+                    <SolidColorBrush Color="#B2AEA57C" Opacity="0.8"/>
+                </GridSplitter.Background>
+            </GridSplitter>
         </Grid>
 
     </Grid>
