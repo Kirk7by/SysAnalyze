@@ -25,7 +25,7 @@ namespace lb7.страницы
         public Page4()
         {
             InitializeComponent();
-
+            Обновить_почистить_Click(null, null);
         }
 
         public void DataGridUpdateDate()
@@ -106,29 +106,34 @@ namespace lb7.страницы
             }
         }
 
-        private void отобразить_машины_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void добавить_авто_Click(object sender, RoutedEventArgs e)
         {
-
+            ADD();
         }
 
         private void изменить_авто_Click(object sender, RoutedEventArgs e)
         {
-
+            UPD();
         }
 
         private void удалить_авто_Click(object sender, RoutedEventArgs e)
         {
-
+            DEL();
         }
 
         private void TbAutoNumber_KeyUp(object sender, KeyEventArgs e)
         {
-
+            if (TbAutoNumber.Text != "")
+            {
+                dGrid.ItemsSource = from d in Lavt
+                                    where d.Регистрационный_номер == TbAutoNumber.Text
+                                    select d;
+            }
+            else
+            {
+                dGrid.ItemsSource = from d in Lavt
+                                    select d;
+            }
         }
         private void TbAutoNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -136,7 +141,17 @@ namespace lb7.страницы
         }
         private void tbMark_KeyUp(object sender, KeyEventArgs e)
         {
-
+            if (TbAutoNumber.Text == "")
+            {
+                dGrid.ItemsSource = from d in Lavt
+                                    where d.Марка_авто.ToLower().Contains(tbMark.Text.ToLower())
+                                    select d;
+            }
+            else
+            {
+                dGrid.ItemsSource = from d in Lavt
+                                    select d;
+            }
         }
 
         private void comboBox_Loaded(object sender, RoutedEventArgs e)
@@ -148,11 +163,29 @@ namespace lb7.страницы
                     List<Водители> vod = _context.ВодителиSet.ToList();
                     comboBox.ItemsSource = from v in vod
                                            select v.Табельный_номер;
-                   
-                    //  dGrid.ItemsSource = Lvod.ToList();
                 }
             }
             catch (Exception ex) { MessageBox.Show("Ошибка выгрузки таблицы" + ex.Message); }
+        }
+        private void Обновить_почистить_Click(object sender, RoutedEventArgs e)
+        {
+            TbAutoNumber.Text = "";
+            tbMark.Text = "";
+            dataPick.SelectedDate = DateTime.Today;
+            comboBox.Text = "";
+            DataGridUpdateDate();
+        }
+
+        private void dGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dGrid.SelectedItem != null)
+            {
+                Автомобили AVT = dGrid.SelectedItem as Автомобили;
+                TbAutoNumber.Text = AVT.Регистрационный_номер;
+                tbMark.Text = AVT.Марка_авто;
+                dataPick.SelectedDate = AVT.Дата_выпуска;
+                comboBox.Text = Convert.ToString(AVT.ВодителиТабельный_номер);
+            }
         }
     }
 }

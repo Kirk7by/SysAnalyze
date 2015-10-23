@@ -8,7 +8,18 @@
 	Title="Page4" Uid="4">
 
     <Grid>
-        <Grid Margin="0,0,5.8,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="418*"/>
+            <ColumnDefinition Width="203*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+
+        <Image x:Name="image" Source="/lb7;component/media/Auto.png" Grid.Row="1" Stretch="Fill"/>
+
+        <Grid Margin="0,0,6,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="64"/>
@@ -18,17 +29,17 @@
                 <ColumnDefinition Width="112*"/>
                 <ColumnDefinition Width="265*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True"  
-                RowDetailsVisibilityMode="VisibleWhenSelected" Style="{DynamicResource DataGridStyle2}">
+            <DataGrid x:Name="dGrid" Margin="5,25,1,2" Grid.Column="2" ColumnWidth="*" AutoGenerateColumns="False" EnableRowVirtualization="True" IsReadOnly="True" 
+        		RowDetailsVisibilityMode="VisibleWhenSelected" Style="{DynamicResource DataGridStyle2}" SelectionChanged="dGrid_SelectionChanged" Background="#B2F0F0F0">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="ColumnРегистрационный_номер"  Binding="{Binding Регистрационный_номер}"  
-                                Header="Регистрационный номер" />
+                		Header="Регистрационный номер" />
                     <DataGridTextColumn x:Name="ColumnМарка_авто" Binding="{Binding Марка_авто}"  
-                                Header="Марка авто" />
+                		Header="Марка авто" />
                     <DataGridTextColumn x:Name="ColumnДата_выпуска" Binding="{Binding Дата_выпуска}"  
-                                Header="Дата выпуска" />
+                		Header="Дата выпуска" />
                     <DataGridTextColumn x:Name="ColumnВодителиТабельный_номер" Binding="{Binding ВодителиТабельный_номер}"  
-                                Header="Табельный водителя" />
+                		Header="Табельный водителя" />
                 </DataGrid.Columns>
             </DataGrid>
             <Label Content="Операции с автомобилями" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
@@ -42,9 +53,9 @@
                 <Button x:Name="добавить_авто" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="{x:Null}" Foreground="White" Click="добавить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
                 <Button x:Name="удалить_авто" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="{x:Null}" Foreground="White" Grid.Column="2" Click="удалить_авто_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
-            <Button x:Name="отобразить_машины" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FFB88C6E" BorderBrush="{x:Null}" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="отобразить_машины_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
+            <Button x:Name="Обновить_почистить" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FFB88C6E" BorderBrush="{x:Null}" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="Обновить_почистить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             <Viewbox StretchDirection="UpOnly" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.ColumnSpan="2" Stretch="Fill">
-                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFEED9CB" Width="158">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#CCEED9CB" Width="158">
                     <TextBox x:Name="TbAutoNumber" Height="23" Margin="5,25,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbAutoNumber_KeyUp" PreviewTextInput="TbAutoNumber_PreviewTextInput" FontSize="13.333" MaxLength="9"/>
                     <TextBox x:Name="tbMark" Height="22" Margin="5,75,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="tbMark_KeyUp" FontSize="13.333"/>
                     <Label Content="Рег. номер авто:" VerticalAlignment="Top" Height="17" HorizontalAlignment="Left" Width="140" Foreground="#FF5D9993" Margin="5,8,0,0" Padding="0" FontWeight="Bold" FontStyle="Italic" FontSize="13.333" BorderBrush="#FF701D1D"/>

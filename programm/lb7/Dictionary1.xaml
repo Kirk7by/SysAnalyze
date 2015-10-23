@@ -185,13 +185,16 @@
     <Style x:Key="DataGridStyle2"
            TargetType="DataGrid">
 
-        
         <Setter Property="CellStyle">
             <Setter.Value>
                 <Style TargetType="DataGridCell">
                       
-                        <Setter Property="FontSize" Value="12" />
-                    
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF6D5970" Opacity="0.2" />
+                        </Setter.Value>
+                    </Setter>
                     <Style.Triggers>
                         <Trigger Property="DataGridCell.IsSelected" Value="true" >
                             <Setter Property="BorderThickness" Value="0" />
