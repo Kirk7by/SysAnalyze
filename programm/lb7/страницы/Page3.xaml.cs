@@ -22,18 +22,17 @@ namespace lb7.страницы
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page3 : Page
+    public partial class Page3 : Page, IActionsBdForms
     {
         List<Водители> Lvod = new List<Водители>();
         
         public Page3()
         {
             InitializeComponent();
-
-            DataGridUpdateDate();
+            Обновить_и_почистить_Click(null, null);
         }
 
-        private void DataGridUpdateDate()
+        public void DataGridUpdateDate()
         {
             try
             {
@@ -50,15 +49,15 @@ namespace lb7.страницы
 
         private void нанять_водителя_Click(object sender, RoutedEventArgs e)
         {
-            добавить_водителя();
+            ADD();
         }
         private void изменить_Click(object sender, RoutedEventArgs e)
         {
-            изменить_водителя();
+            UPD();
         }
         private void уволить_Click(object sender, RoutedEventArgs e)
         {
-            удалить_водителя();
+            DEL();
         }
         
         void отобразить_конкретного_водителя_TABNOMER()
@@ -93,7 +92,7 @@ namespace lb7.страницы
             }
         }
 
-        void добавить_водителя()
+        public void ADD()
         {
             try
             {
@@ -111,7 +110,7 @@ namespace lb7.страницы
                 MessageBox.Show("Что-то пошло не так" + ex.Message);
             }
         }
-        void изменить_водителя()
+        public void UPD()
         {
             try
             {
@@ -135,7 +134,7 @@ namespace lb7.страницы
             }
 
         }
-        void удалить_водителя()
+        public void DEL()
         {
             try
             {

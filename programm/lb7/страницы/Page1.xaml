@@ -30,7 +30,7 @@
                 <Button x:Name="add" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="{x:Null}" Foreground="White" Click="add_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
                 <Button x:Name="del" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="{x:Null}" Foreground="White" Grid.Column="2" Click="del_Click"  Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
-            <Viewbox x:Name="Vievbox1" Margin="0,2,0,0" Grid.ColumnSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2">
+            <Viewbox x:Name="Vievbox1" Margin="0,2,0,0" Grid.ColumnSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2" Stretch="Fill">
                 <Grid x:Name="gridView" Height="435" VerticalAlignment="Top" Width="197">
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="54" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,379,0,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFF8D8FF" Margin="1,-2,1,0"/>
