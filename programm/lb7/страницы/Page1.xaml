@@ -30,8 +30,8 @@
                 <Button x:Name="add" Content="Добавить" Margin="0,0,4.8,3" Background="#FF89B088" BorderBrush="{x:Null}" Foreground="White" Click="add_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
                 <Button x:Name="del" Content="Удалить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="{x:Null}" Foreground="White" Grid.Column="2" Click="del_Click"  Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
-            <Viewbox x:Name="Vievbox1" Margin="0,2,0,0" Grid.ColumnSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2">
-                <Grid x:Name="gridView" Height="435" VerticalAlignment="Top">
+            <Viewbox x:Name="Vievbox1" Margin="0,2,0,0" Grid.ColumnSpan="2" MinWidth="150" MinHeight="300" StretchDirection="UpOnly" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2">
+                <Grid x:Name="gridView" Height="435" VerticalAlignment="Top" Width="197">
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="54" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,379,0,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFF8D8FF" Margin="1,-2,1,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,252,0,0"/>
@@ -40,8 +40,8 @@
                     <Label Content="Путевой №" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="24" Foreground="#FF1900FF" FontSize="14" FontWeight="Bold"/>
                     <TextBox x:Name="tb1NumberTabelnogo" Height="26" Margin="74,38,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <TextBox x:Name="tb1NumberAvto" Height="26" Margin="74,67,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
-                    <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
-                    <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,8,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Табельный:" HorizontalAlignment="Left" Margin="5,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Foreground="#FF1900FF"/>
                     <Label Content="Номер авто:" HorizontalAlignment="Left" Margin="5,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="68" Padding="0" Height="17" Foreground="#FF1900FF"/>
                     <Label Content="Остаток&#xA;Топлива:" HorizontalAlignment="Left" Margin="5,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Height="34"/>
@@ -56,13 +56,13 @@
                         <Label Content="Информация при отъезде" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,64.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
                     </Border>
                     <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
-                    <TextBox x:Name="tb2DateTime" Height="26" Margin="82,196,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb2DateTime" Height="26" Margin="82,196,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
-                    <TextBox x:Name="tb3OstTopliva" Height="26" Margin="80,256,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
-                    <TextBox x:Name="tb3PokazSpidometra" Height="26" Margin="80,287,9,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb3OstTopliva" Height="26" Margin="80,256,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb3PokazSpidometra" Height="26" Margin="80,287,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Остаток&#xA;Топлива:" HorizontalAlignment="Left" Margin="5,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="66" Padding="0" Height="34"/>
                     <Label Content="Показания&#xA;спидометра:" HorizontalAlignment="Left" Margin="5,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="34"/>
-                    <TextBox x:Name="tb3DateTime" Height="26" Margin="78,322,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb3DateTime" Height="26" Margin="78,322,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Дата&#xA;и время:" HorizontalAlignment="Left" Margin="5,318,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="51" Padding="0" Height="34"/>
                     <Border BorderThickness="1" Height="27" Margin="1,225,-1,0" VerticalAlignment="Top">
                         <Border.Background>
@@ -85,10 +85,10 @@
                         <Label Content="Заправка" RenderTransformOrigin="-0.75,6.133" Padding="0" Margin="-0.8,9.2,35.4,-0.6" Foreground="#FF1A007F" FontStyle="Italic" FontSize="10"/>
                     </Border>
                     <CheckBox x:Name="ch4Infozapr" Content="Информация о&#xD;&#xA; заправке" HorizontalAlignment="Left" Margin="88,357,0,0" VerticalAlignment="Top" FontSize="10" Padding="2,-4,0,0" Foreground="#FF035113"/>
-                    <TextBox x:Name="tb4MarkaTopliva" Height="19" Margin="90,384,7,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb4MarkaTopliva" Height="19" Margin="90,384,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                     <Label Content="Марка топлива:" HorizontalAlignment="Left" Margin="5,384,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="16" FontSize="10"/>
                     <Label Content="Ко-во литров:" HorizontalAlignment="Left" Margin="5,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="75" Padding="0" Height="16" FontSize="10"/>
-                    <TextBox x:Name="tb4KolvoLitrov" Height="20" Margin="91,405,7,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
+                    <TextBox x:Name="tb4KolvoLitrov" Height="20" Margin="91,405,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1"/>
                 </Grid>
             </Viewbox>
             <GridSplitter Width="13" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2" BorderBrush="White" BorderThickness="2.3,0,1,0"/>

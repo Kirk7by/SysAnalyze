@@ -99,7 +99,7 @@ namespace lb7.страницы
             {
                 using (BdModelContainer _context = new BdModelContainer())
                 {
-                    var vod = new Водители() { Табельный_номер = Convert.ToInt32(TbTabNumber.Text), ФИО = tbName.Text, Дата_взятия_на_работу = Convert.ToDateTime(tbDataEmployment.Text) };
+                    var vod = new Водители() { Табельный_номер = Convert.ToInt32(TbTabNumber.Text), ФИО = tbName.Text, Дата_взятия_на_работу = (DateTime)dataPick.SelectedDate };
                     _context.ВодителиSet.Add(vod);
                     _context.SaveChanges();
                     DataGridUpdateDate();
@@ -122,7 +122,7 @@ namespace lb7.страницы
                     if (result != null)
                     {
                         result.ФИО = tbName.Text;
-                        result.Дата_взятия_на_работу = Convert.ToDateTime(tbDataEmployment.Text);
+                        result.Дата_взятия_на_работу = (DateTime)dataPick.SelectedDate;
                         _context.SaveChanges();
                     }
                     DataGridUpdateDate();
@@ -179,8 +179,8 @@ namespace lb7.страницы
             {
                 Водители vod = dGrid.SelectedItem as Водители;
                 TbTabNumber.Text = Convert.ToString(vod.Табельный_номер);
-                tbName.Text = vod.ФИО;
-                tbDataEmployment.Text = Convert.ToString(vod.Дата_взятия_на_работу);
+                tbName.Text = vod.ФИО; 
+                dataPick.SelectedDate= vod.Дата_взятия_на_работу;
             }
         }
 
@@ -194,20 +194,11 @@ namespace lb7.страницы
 
         private void Обновить_и_почистить_Click(object sender, RoutedEventArgs e)
         {
-            tbDataEmployment.Text = "";
+            
             tbName.Text = "";
             TbTabNumber.Text = "";
-            tbDataEmployment_KeyUp(sender, null);
+            dataPick.SelectedDate = DateTime.Today;
             DataGridUpdateDate();
-        }
-
-        private void checkBoxToday_Checked(object sender, RoutedEventArgs e)
-        {
-            tbDataEmployment.Text = Convert.ToString(DateTime.Today.Date);
-        }
-        private void tbDataEmployment_KeyUp(object sender, KeyEventArgs e)
-        {
-            checkBoxToday.IsChecked = false;
         }
     }
 }

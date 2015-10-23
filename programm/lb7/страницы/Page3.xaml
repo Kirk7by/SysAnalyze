@@ -16,8 +16,8 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="112*"/>
-                <ColumnDefinition Width="265*"/>
+                <ColumnDefinition Width="179*"/>
+                <ColumnDefinition Width="436*"/>
             </Grid.ColumnDefinitions>
 
 
@@ -49,18 +49,17 @@
                 <Button x:Name="уволить" Content="Уволить" Margin="5,0,0,3" Background="#FF744A4A" BorderBrush="White" Foreground="White" Grid.Column="2" Click="уволить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
             </Grid>
             <Button x:Name="Обновить_и_почистить" Content="Обновить/Чистка" Margin="5,3,14,3" Background="#FFBDBBBB" BorderBrush="White" Foreground="White" Grid.ColumnSpan="2" Grid.Row="1" Click="Обновить_и_почистить_Click" Style="{DynamicResource buttonSetupStyle}" BorderThickness="3"/>
-            <Viewbox Grid.ColumnSpan="2" Margin="0,0,0,2" StretchDirection="UpOnly">
-                <Grid HorizontalAlignment="Left" Height="262" VerticalAlignment="Top" Width="142">
-                    <TextBox x:Name="TbTabNumber" Height="23" Margin="5,30,37,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbTabNumber_KeyUp" PreviewTextInput="TbTabNumber_PreviewTextInput" FontSize="13.333" MaxLength="9"/>
-                    <TextBox x:Name="tbName" Height="47" Margin="5,101,10,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="tbName_KeyUp" FontSize="13.333"/>
-                    <TextBox x:Name="tbDataEmployment" Height="45" Margin="5,189,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13.333" KeyUp="tbDataEmployment_KeyUp"/>
-                    <Label Content="Табельный номер:" VerticalAlignment="Top" Height="30" FontSize="13.333" HorizontalAlignment="Left" Width="146"/>
-                    <Label Content="ФИО:" Margin="5,73,0,0" VerticalAlignment="Top" Height="28" FontSize="13.333" HorizontalAlignment="Left" Width="52"/>
-                    <Label Content="Дата взятия:" Margin="5,158,0,0" VerticalAlignment="Top" Height="31" FontSize="13.333" HorizontalAlignment="Left"/>
-                    <CheckBox x:Name="checkBoxToday" Content="Сегодняшняя дата" HorizontalAlignment="Left" Margin="7,237,0,0" VerticalAlignment="Top" Checked="checkBoxToday_Checked"/>
+            <Viewbox Grid.ColumnSpan="2" Margin="-4,0,0,0" StretchDirection="UpOnly" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFB8E4C2" Width="153" Height="237">
+                    <TextBox x:Name="TbTabNumber" Height="23" Margin="5,27,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="TbTabNumber_KeyUp" PreviewTextInput="TbTabNumber_PreviewTextInput" FontSize="13.333" MaxLength="9"/>
+                    <TextBox x:Name="tbName" Height="53" Margin="5,112,14,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="tbName_KeyUp" FontSize="13.333"/>
+                    <Label Content="Табельный номер:" VerticalAlignment="Top" Height="26" FontSize="13.333" HorizontalAlignment="Left" Width="127" Foreground="#FF061289" Margin="0,3,0,0"/>
+                    <Label Content="ФИО:" Margin="5,88,0,0" VerticalAlignment="Top" Height="25" FontSize="13.333" HorizontalAlignment="Left" Width="47" Foreground="#FF061289"/>
+                    <Label Content="Дата взятия:" Margin="5,165,0,0" VerticalAlignment="Top" Height="26" FontSize="13.333" HorizontalAlignment="Left" Foreground="#FF061289"/>
+                    <DatePicker x:Name="dataPick" HorizontalAlignment="Left" Margin="5,191,0,13" Width="127" FontSize="18.667"/>
                 </Grid>
             </Viewbox>
-            <GridSplitter Margin="0,2,0,0" Width="9" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2" BorderThickness="0"/>
+            <GridSplitter Width="13" Grid.Column="1" Background="#FFC5FFBB" Grid.RowSpan="2" BorderThickness="4,0,0,0" BorderBrush="White"/>
         </Grid>
 
     </Grid>
