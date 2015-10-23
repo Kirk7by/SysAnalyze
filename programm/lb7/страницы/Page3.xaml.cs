@@ -52,26 +52,15 @@ namespace lb7.страницы
         {
             добавить_водителя();
         }
-
         private void изменить_Click(object sender, RoutedEventArgs e)
         {
-
+            изменить_водителя();
         }
-
         private void уволить_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Отобразить_Click(object sender, RoutedEventArgs e)
-        {
-
+            удалить_водителя();
         }
         
-        void отобразить_список_водителей()
-        {
-
-        }
         void отобразить_конкретного_водителя_TABNOMER()
         {
             if (TbTabNumber.Text != "")
@@ -88,16 +77,19 @@ namespace lb7.страницы
         }
         void отобразить_конкретного_водителя_FNAME()
         {
-            if (tbName.Text != "")
+            if (TbTabNumber.Text == "")
             {
-                dGrid.ItemsSource = from d in Lvod
-                                    where d.ФИО.ToLower().Contains(tbName.Text.ToLower())
-                                    select d;
-            }
-            else
-            {
-                dGrid.ItemsSource = from d in Lvod
-                                    select d;
+                if (tbName.Text != "")
+                {
+                    dGrid.ItemsSource = from d in Lvod
+                                        where d.ФИО.ToLower().Contains(tbName.Text.ToLower())
+                                        select d;
+                }
+                else
+                {
+                    dGrid.ItemsSource = from d in Lvod
+                                        select d;
+                }
             }
         }
 
@@ -116,16 +108,54 @@ namespace lb7.страницы
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Что-то пошло не так" + ex);
+                MessageBox.Show("Что-то пошло не так" + ex.Message);
             }
         }
         void изменить_водителя()
         {
-    //        this._context.SaveChanges();
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    int tabnumber = int.Parse(TbTabNumber.Text);
+                    var result = _context.ВодителиSet.SingleOrDefault(b => b.Табельный_номер == tabnumber);
+                    if (result != null)
+                    {
+                        result.ФИО = tbName.Text;
+                        result.Дата_взятия_на_работу = Convert.ToDateTime(tbDataEmployment.Text);
+                        _context.SaveChanges();
+                    }
+                    DataGridUpdateDate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Что-то пошло не так: " + ex.Message);
+            }
+
         }
         void удалить_водителя()
         {
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    int tabnumber = int.Parse(TbTabNumber.Text);
+                    var result = _context.ВодителиSet.SingleOrDefault(b => b.Табельный_номер == tabnumber);
+                    if (result != null)
+                    {
+                        _context.ВодителиSet.Remove(result);
+                        _context.SaveChanges();
+                    }
+                    DataGridUpdateDate();
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Что-то пошло не так: " + ex.Message);
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -144,8 +174,40 @@ namespace lb7.страницы
 
         private void dGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            MessageBox.Show(Convert.ToString(dGrid.SelectedCells));
+
+            if (dGrid.SelectedItem != null)
+            {
+                Водители vod = dGrid.SelectedItem as Водители;
+                TbTabNumber.Text = Convert.ToString(vod.Табельный_номер);
+                tbName.Text = vod.ФИО;
+                tbDataEmployment.Text = Convert.ToString(vod.Дата_взятия_на_работу);
+            }
+        }
+
+        private void TbTabNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Обновить_и_почистить_Click(object sender, RoutedEventArgs e)
+        {
+            tbDataEmployment.Text = "";
+            tbName.Text = "";
+            TbTabNumber.Text = "";
+            tbDataEmployment_KeyUp(sender, null);
+            DataGridUpdateDate();
+        }
+
+        private void checkBoxToday_Checked(object sender, RoutedEventArgs e)
+        {
+            tbDataEmployment.Text = Convert.ToString(DateTime.Today.Date);
+        }
+        private void tbDataEmployment_KeyUp(object sender, KeyEventArgs e)
+        {
+            checkBoxToday.IsChecked = false;
         }
     }
 }
