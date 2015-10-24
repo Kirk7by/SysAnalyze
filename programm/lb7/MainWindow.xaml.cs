@@ -26,6 +26,7 @@ namespace lb7
         }
         private void Перейти_путевые_Click(object sender, RoutedEventArgs e)
         {
+            
             фрейм.Content = null;
             фрейм.NavigationService.RemoveBackEntry();          
             фрейм.Source = new Uri("страницы/Page1.xaml", UriKind.Relative);
