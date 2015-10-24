@@ -73,7 +73,7 @@ namespace lb7 {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
-            SplashScreen splashScreen = new SplashScreen("media/splashscreen.png");
+            SplashScreen splashScreen = new SplashScreen("media/splashscreenf.png");
             splashScreen.Show(true);
             lb7.App app = new lb7.App();
             app.InitializeComponent();
