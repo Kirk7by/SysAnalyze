@@ -12,19 +12,171 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
+using DataBase;
 
 namespace lb7.страницы
 {
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class Page2 : System.Windows.Controls.Page
     {
         public Page2()
         {
             InitializeComponent();
+          //  iitializeExcel();
+            
+
         }
 
+        private void initWORD()
+        {
+            List<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result> Lputotch = new List<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result>();
+            try
+            {
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter();
+                    param.ParameterName = "@dateMonth";
+                    param.Value = Convert.ToDateTime("01-01-2015");
+                    param.SqlDbType = System.Data.SqlDbType.DateTime;
+                    param.Direction = System.Data.ParameterDirection.Input;
+                    DateTime? par = Convert.ToDateTime(DatePick.SelectedDate);
+
+
+                    var phones = _context.Database.SqlQuery<Путевые_листы>("HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА @dateMonth", param);
+                    
+                    foreach (var v in _context.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА(par))
+                    {
+                        Lputotch.Add(v);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show(Convert.ToString(ex)); return; }
+
+
+            Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application(); //создаем COM-объект Word
+            word.Visible = true;
+
+           
+            Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
+            doc.Select();
+            doc.PageSetup.TogglePortrait(); //горизонтальный вид
+
+
+
+            Object defaultTableBehavior = Microsoft.Office.Interop.Word.WdDefaultTableBehavior.wdWord9TableBehavior;
+            Object autoFitBehavior = Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitWindow;
+            //Добавляем таблицу и получаем объект wordtable 
+
+            Microsoft.Office.Interop.Word.Range wordrange = doc.Range(0, 1);
+            wordrange.Select();
+            wordrange.Font.Size = 16;
+            wordrange.Font.Name = "Times New Roman";
+            
+
+            Microsoft.Office.Interop.Word.Table wordtable = doc.Tables.Add(wordrange, 2+ Lputotch.Count, 7, ref defaultTableBehavior, ref autoFitBehavior);
+
+            wordtable.Rows.Alignment = Microsoft.Office.Interop.Word.WdRowAlignment.wdAlignRowCenter;
+
+            Microsoft.Office.Interop.Word.Range wordcellrange = doc.Tables[1].Cell(1, 2).Range;
+
+            wordcellrange = wordtable.Cell(1, 1).Range;
+            wordcellrange.Text = "Отчет о работе транспортных средств за "+DatePick.SelectedDate.Value.ToString("MMMM")+" "+ DatePick.SelectedDate.Value.Year+"-го года";
+            wordcellrange = wordtable.Cell(2, 1).Range;
+            wordcellrange.Text = "№ п/п";
+            wordcellrange = wordtable.Cell(2, 2).Range;
+            wordcellrange.Text = "Наименование транспорта";
+            wordcellrange = wordtable.Cell(2, 3).Range;
+            wordcellrange.Text = "Выполняемая работа";
+            wordcellrange = wordtable.Cell(2, 4).Range;
+            wordcellrange.Text = "Остаток на начало месяца";
+            wordcellrange = wordtable.Cell(2, 5).Range;
+            wordcellrange.Text = "Получено за месяц";
+            wordcellrange = wordtable.Cell(2, 6).Range;
+            wordcellrange.Text = "Расход";
+            wordcellrange = wordtable.Cell(2, 7).Range;
+            wordcellrange.Text = "Остаток на конец месяца";
+
+            int i = 2;
+            foreach(var sv in Lputotch)
+            {
+                i++;
+                wordcellrange = wordtable.Cell(i, 1).Range;
+                wordcellrange.Text = i-2+"";
+                wordcellrange = wordtable.Cell(i, 2).Range;
+                wordcellrange.Text = sv.Остаток_топлива+"";
+                wordcellrange = wordtable.Cell(i, 3).Range;
+                wordcellrange.Text = sv.Количество_литров+"";
+                wordcellrange = wordtable.Cell(i, 4).Range;
+                wordcellrange.Text = Lputotch.Capacity+"";
+                wordcellrange = wordtable.Cell(i, 5).Range;
+                wordcellrange.Text = "Получено за месяц";
+                wordcellrange = wordtable.Cell(i, 6).Range;
+                wordcellrange.Text = "Расход";
+                wordcellrange = wordtable.Cell(i, 7).Range;
+                wordcellrange.Text = "Остаток на конец месяца";
+            }
+
+            object begCell = wordtable.Cell(1, 1).Range.Start;
+            object endCell = wordtable.Cell(1, 7).Range.End;
+
+
+           
+            wordcellrange = doc.Range(ref begCell, ref endCell);
+            wordcellrange.Select();
+            wordcellrange.Cells.Shading.BackgroundPatternColor = WdColor.wdColorGray10;
+            wordcellrange.Font.Size = 26;
+            
+            word.Selection.Cells.Merge();
+            
+
+            
+        }
+
+        void iitializeExcel()
+        {
+
+            Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel is not properly installed!!");
+                return;
+            }
+
+
+           
+            xlApp.Application.Workbooks.Add(Type.Missing);
+            xlApp.Columns.ColumnWidth = 30;
+            xlApp.Cells[1, 1] = "ОТЧЕТ: Работа тс";
+            xlApp.Cells[1, 2] = "Создан: " + Convert.ToString(DateTime.Now);
+            xlApp.Cells[3, 1] = "Регистрационный знак авто";
+            xlApp.Cells[3, 2] = "Марка автомобиля";
+            xlApp.Cells[3, 3] = "Время автомобиля в наряде в часах";
+
+            xlApp.Visible = true;
+        }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
         private void Отчет_о_работе_тс_Click(object sender, RoutedEventArgs e)
         {
             Отчет_о_работе_тс_вывод();
@@ -41,7 +193,8 @@ namespace lb7.страницы
         }
 
         void Отчет_о_работе_тс_вывод()
-        { 
+        {
+            initWORD();
         }
         void Статистика_по_топливу_вывод()
         {

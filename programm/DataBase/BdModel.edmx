@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="Номер_путевого" />
           </Key>
-          <Property Name="Номер_путевого" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Номер_путевого" Type="int" Nullable="false" />
           <Property Name="Дата_и_время_отправления" Type="datetime" Nullable="false" />
           <Property Name="Показания_спидометра" Type="int" />
           <Property Name="Остаток_топлива" Type="int" />
@@ -74,6 +74,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateMonth" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="BdModelStoreContainer">
           <EntitySet Name="АвтомобилиSet" EntityType="Self.АвтомобилиSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ВодителиSet" EntityType="Self.ВодителиSet" Schema="dbo" store:Type="Tables" />
@@ -111,6 +114,9 @@
             <End Role="Водители" EntitySet="ВодителиSet" />
             <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
           </AssociationSet>
+          <FunctionImport Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" ReturnType="Collection(BdModel.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result)">
+          <Parameter Name="dateMonth" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Водители">
           <Key>
@@ -137,7 +143,7 @@
           <Key>
             <PropertyRef Name="Номер_путевого" />
           </Key>
-          <Property Name="Номер_путевого" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Номер_путевого" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="Дата_и_время_отправления" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Показания_спидометра" Type="Int32" Nullable="true" />
           <Property Name="Остаток_топлива" Type="Int32" Nullable="true" />
@@ -187,6 +193,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result">
+          <Property Type="Int32" Name="Остаток_топлива" Nullable="true" />
+          <Property Type="Int32" Name="Остаток_топлива_при_приезде" Nullable="true" />
+          <Property Type="Int32" Name="Количество_литров" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -229,6 +240,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" FunctionName="BdModel.Store.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BdModel.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result">
+                <ScalarProperty Name="Остаток_топлива" ColumnName="Остаток_топлива" />
+                <ScalarProperty Name="Остаток_топлива_при_приезде" ColumnName="Остаток_топлива_при_приезде" />
+                <ScalarProperty Name="Количество_литров" ColumnName="Количество_литров" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

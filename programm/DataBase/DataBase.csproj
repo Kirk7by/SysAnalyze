@@ -66,6 +66,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BdModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Автомобили.cs">

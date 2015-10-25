@@ -12,6 +12,8 @@ namespace DataBase
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BdModelContainer : DbContext
     {
@@ -28,5 +30,14 @@ namespace DataBase
         public virtual DbSet<Водители> ВодителиSet { get; set; }
         public virtual DbSet<Автомобили> АвтомобилиSet { get; set; }
         public virtual DbSet<Путевые_листы> Путевые_листыSet { get; set; }
+    
+        public virtual ObjectResult<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result> HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА(Nullable<System.DateTime> dateMonth)
+        {
+            var dateMonthParameter = dateMonth.HasValue ?
+                new ObjectParameter("dateMonth", dateMonth) :
+                new ObjectParameter("dateMonth", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result>("HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА", dateMonthParameter);
+        }
     }
 }
