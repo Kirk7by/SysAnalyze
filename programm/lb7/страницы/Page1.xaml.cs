@@ -78,7 +78,16 @@ namespace lb7.страницы
                         {
                             put.Количество_литров = int.Parse(tb4KolvoLitrov.Text);
                             put.Марка_топлива = tb4MarkaTopliva.Text;
+                            if (tb4KolvoLitrov.Text != "")
+                                put.Расход = int.Parse(tb2OstTopliva.Text) - int.Parse(tb3OstTopliva.Text) + int.Parse(tb4KolvoLitrov.Text);
+                            else
+                                put.Расход = int.Parse(tb2OstTopliva.Text) - int.Parse(tb3OstTopliva.Text);
                         }
+                        else
+                        {
+                            put.Расход = int.Parse(tb2OstTopliva.Text) - int.Parse(tb3OstTopliva.Text);
+                        }
+                        
                     }
                     _context.Путевые_листыSet.Add(put);
                     _context.SaveChanges();
@@ -112,11 +121,17 @@ namespace lb7.страницы
                         result.Дата_время_возвращения = Convert.ToDateTime(tb3DateTime.SelectedDate);
                         result.Остаток_топлива_при_приезде = int.Parse(tb3OstTopliva.Text);
 
-                        if(ch4Infozapr.IsChecked==true)
+                        
+                        if (ch4Infozapr.IsChecked==true)
                         {
                             result.Марка_топлива = tb4MarkaTopliva.Text;
                             result.Количество_литров = int.Parse(tb4KolvoLitrov.Text);
                         }
+                        if(tb4KolvoLitrov.Text!="")
+                            result.Расход = int.Parse(tb2OstTopliva.Text) - int.Parse(tb3OstTopliva.Text)+ int.Parse(tb4KolvoLitrov.Text);
+                        else
+                            result.Расход = int.Parse(tb2OstTopliva.Text) - int.Parse(tb3OstTopliva.Text);
+
 
                         _context.SaveChanges();
                     }

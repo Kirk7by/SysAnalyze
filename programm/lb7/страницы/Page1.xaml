@@ -12,16 +12,17 @@
             <Setter Property="Background" Value="#FFEAE8DB"></Setter>
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="true" >
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="FontSize" Value="22" />
+                    <Setter Property="BorderThickness" Value="4,4,2,4" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="Background" >
                         <Setter.Value>
-                            <SolidColorBrush Color="#FF6D5970"  />
+                            <SolidColorBrush Color="#FFD3C050"  />
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Foreground" >
                         <Setter.Value>
-                            <SolidColorBrush Color="White"  />
+                            <SolidColorBrush Color="#FF912E2E"  />
                         </Setter.Value>
                     </Setter>
 
@@ -32,11 +33,11 @@
             <Setter Property="Background" Value="#FFACF5E5"></Setter>
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="true" >
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="BorderThickness" Value="2,4" />
+                    <Setter Property="FontSize" Value="20" />
                     <Setter Property="Background" >
                         <Setter.Value>
-                            <SolidColorBrush Color="#FF6D5970"  />
+                            <SolidColorBrush Color="#FF010C7E"  />
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Foreground" >
@@ -52,11 +53,32 @@
             <Setter Property="Background" Value="#FFADF7A0"></Setter>
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="true" >
-                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="BorderThickness" Value="2,4" />
                     <Setter Property="FontSize" Value="20" />
                     <Setter Property="Background" >
                         <Setter.Value>
-                            <SolidColorBrush Color="#FF6D5970"  />
+                            <SolidColorBrush Color="#FF2A3828"  />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="White"  />
+                        </Setter.Value>
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cell4Style" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#FFF0AF81"></Setter>
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="true" >
+                    <Setter Property="BorderThickness" Value="2,4,4,4" />
+                    <Setter Property="FontSize" Value="22" />
+                    
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF990000"  />
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Foreground" >
@@ -113,6 +135,8 @@
                                 Header="Марка топлива" />
                     <DataGridTextColumn x:Name="Количество_литровColumn" Binding="{Binding Количество_литров}"  CellStyle="{StaticResource cell3Style}" Width="70" 
                                 Header="Ко-во литров" />
+                    <DataGridTextColumn x:Name="РасходColumn" Binding="{Binding Расход}"  CellStyle="{StaticResource cell4Style}"
+                                Header="Расход" />
 
                 </DataGrid.Columns>
 

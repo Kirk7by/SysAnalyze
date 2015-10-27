@@ -10,24 +10,13 @@
 namespace DataBase
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Путевые_листы
+    public partial class HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result1
     {
         public int Номер_путевого { get; set; }
-        public System.DateTime Дата_и_время_отправления { get; set; }
-        public Nullable<int> Показания_спидометра { get; set; }
+        public string АвтомобилиРегистрационный_номер { get; set; }
         public Nullable<int> Остаток_топлива { get; set; }
         public Nullable<int> Остаток_топлива_при_приезде { get; set; }
-        public Nullable<int> Показания_спидометра_при_приезде { get; set; }
-        public string Марка_топлива { get; set; }
-        public Nullable<System.DateTime> Дата_время_возвращения { get; set; }
         public Nullable<int> Количество_литров { get; set; }
-        public string АвтомобилиРегистрационный_номер { get; set; }
-        public int ВодителиТабельный_номер { get; set; }
-        public Nullable<int> Расход { get; set; }
-    
-        public virtual Автомобили Автомобили { get; set; }
-        public virtual Водители Водители { get; set; }
     }
 }

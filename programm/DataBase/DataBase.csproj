@@ -66,7 +66,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BdModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА1_Result.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result1.cs">
       <DependentUpon>BdModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />

@@ -31,13 +31,22 @@ namespace DataBase
         public virtual DbSet<Автомобили> АвтомобилиSet { get; set; }
         public virtual DbSet<Путевые_листы> Путевые_листыSet { get; set; }
     
-        public virtual ObjectResult<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result> HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА(Nullable<System.DateTime> dateMonth)
+        public virtual ObjectResult<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result> HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО(Nullable<System.DateTime> dateMonth)
         {
             var dateMonthParameter = dateMonth.HasValue ?
                 new ObjectParameter("dateMonth", dateMonth) :
                 new ObjectParameter("dateMonth", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result>("HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА", dateMonthParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result>("HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО", dateMonthParameter);
+        }
+    
+        public virtual ObjectResult<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result> HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(Nullable<System.DateTime> dateMonth)
+        {
+            var dateMonthParameter = dateMonth.HasValue ?
+                new ObjectParameter("dateMonth", dateMonth) :
+                new ObjectParameter("dateMonth", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result>("HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1", dateMonthParameter);
         }
     }
 }

@@ -37,6 +37,7 @@
           <Property Name="Количество_литров" Type="int" />
           <Property Name="АвтомобилиРегистрационный_номер" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="ВодителиТабельный_номер" Type="int" Nullable="false" />
+          <Property Name="Расход" Type="int" />
         </EntityType>
         <Association Name="FK_АвтомобилиПутевые_листы">
           <End Role="АвтомобилиSet" Type="Self.АвтомобилиSet" Multiplicity="1" />
@@ -74,7 +75,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateMonth" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dateMonth" Type="datetime" Mode="In" />
         </Function>
         <EntityContainer Name="BdModelStoreContainer">
@@ -114,7 +118,10 @@
             <End Role="Водители" EntitySet="ВодителиSet" />
             <End Role="Путевые_листы" EntitySet="Путевые_листыSet" />
           </AssociationSet>
-          <FunctionImport Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" ReturnType="Collection(BdModel.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result)">
+          <FunctionImport Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО" ReturnType="Collection(BdModel.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result)">
+          <Parameter Name="dateMonth" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1" ReturnType="Collection(BdModel.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result)">
           <Parameter Name="dateMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
@@ -156,6 +163,7 @@
           <Property Name="АвтомобилиРегистрационный_номер" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Водители" Relationship="BdModel.ВодителиПутевые_листы" FromRole="Путевые_листы" ToRole="Водители" />
           <Property Name="ВодителиТабельный_номер" Type="Int32" Nullable="false" />
+          <Property Name="Расход" Type="Int32" />
         </EntityType>
         <Association Name="АвтомобилиПутевые_листы">
           <End Type="BdModel.Автомобили" Role="Автомобили" Multiplicity="1" />
@@ -198,6 +206,36 @@
           <Property Type="Int32" Name="Остаток_топлива_при_приезде" Nullable="true" />
           <Property Type="Int32" Name="Количество_литров" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result1">
+          <Property Type="Int32" Name="Номер_путевого" Nullable="false" />
+          <Property Type="String" Name="АвтомобилиРегистрационный_номер" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="Остаток_топлива" Nullable="true" />
+          <Property Type="Int32" Name="Остаток_топлива_при_приезде" Nullable="true" />
+          <Property Type="Int32" Name="Количество_литров" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА1_Result">
+          <Property Type="Int32" Name="Номер_путевого" Nullable="false" />
+          <Property Type="String" Name="АвтомобилиРегистрационный_номер" Nullable="false" MaxLength="12" />
+          <Property Type="Int32" Name="Остаток_топлива" Nullable="true" />
+          <Property Type="Int32" Name="Остаток_топлива_при_приезде" Nullable="true" />
+          <Property Type="Int32" Name="Количество_литров" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result">
+          <Property Type="String" Name="Регистрационный_номер" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="Марка_авто" Nullable="false" />
+          <Property Type="Int32" Name="Остаток_Топлива_При_Выезде_На_Первое_число" Nullable="true" />
+          <Property Type="Int32" Name="Остаток_Топлива_При_Возвращении_На_Последнее_число" Nullable="true" />
+          <Property Type="Int32" Name="Остаток" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result">
+          <Property Type="String" Name="Регистрационный_номер" Nullable="false" MaxLength="12" />
+          <Property Type="String" Name="Марка_авто" Nullable="false" />
+          <Property Type="Int32" Name="Остаток_Топлива_При_Выезде_На_Первое_число" Nullable="true" />
+          <Property Type="Int32" Name="Остаток_Топлива_При_Возвращении_На_Последнее_число" Nullable="true" />
+          <Property Type="Int32" Name="Остаток" Nullable="true" />
+          <Property Type="Int32" Name="Расход_за_месяц" Nullable="true" />
+          <Property Type="Int32" Name="Количество_литров_за_месяц" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -226,7 +264,8 @@
     <EntitySetMapping Name="Путевые_листыSet">
       <EntityTypeMapping TypeName="IsTypeOf(BdModel.Путевые_листы)">
         <MappingFragment StoreEntitySet="Путевые_листыSet">
-          <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
+          <ScalarProperty Name="Расход" ColumnName="Расход" />
+                <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
           <ScalarProperty Name="Дата_и_время_отправления" ColumnName="Дата_и_время_отправления" />
           <ScalarProperty Name="Показания_спидометра" ColumnName="Показания_спидометра" />
           <ScalarProperty Name="Остаток_топлива" ColumnName="Остаток_топлива" />
@@ -240,12 +279,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА" FunctionName="BdModel.Store.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА">
+          <FunctionImportMapping FunctionImportName="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО" FunctionName="BdModel.Store.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BdModel.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result">
-                <ScalarProperty Name="Остаток_топлива" ColumnName="Остаток_топлива" />
-                <ScalarProperty Name="Остаток_топлива_при_приезде" ColumnName="Остаток_топлива_при_приезде" />
-                <ScalarProperty Name="Количество_литров" ColumnName="Количество_литров" />
+              <ComplexTypeMapping TypeName="BdModel.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result">
+                <ScalarProperty Name="Регистрационный_номер" ColumnName="Регистрационный_номер" />
+                <ScalarProperty Name="Марка_авто" ColumnName="Марка_авто" />
+                <ScalarProperty Name="Остаток_Топлива_При_Выезде_На_Первое_число" ColumnName="Остаток_Топлива_При_Выезде_На_Первое_число" />
+                <ScalarProperty Name="Остаток_Топлива_При_Возвращении_На_Последнее_число" ColumnName="Остаток_Топлива_При_Возвращении_На_Последнее_число" />
+                <ScalarProperty Name="Остаток" ColumnName="Остаток" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1" FunctionName="BdModel.Store.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BdModel.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result">
+                <ScalarProperty Name="Регистрационный_номер" ColumnName="Регистрационный_номер" />
+                <ScalarProperty Name="Марка_авто" ColumnName="Марка_авто" />
+                <ScalarProperty Name="Остаток_Топлива_При_Выезде_На_Первое_число" ColumnName="Остаток_Топлива_При_Выезде_На_Первое_число" />
+                <ScalarProperty Name="Остаток_Топлива_При_Возвращении_На_Последнее_число" ColumnName="Остаток_Топлива_При_Возвращении_На_Последнее_число" />
+                <ScalarProperty Name="Остаток" ColumnName="Остаток" />
+                <ScalarProperty Name="Расход_за_месяц" ColumnName="Расход_за_месяц" />
+                <ScalarProperty Name="Количество_литров_за_месяц" ColumnName="Количество_литров_за_месяц" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

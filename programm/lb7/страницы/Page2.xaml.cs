@@ -23,32 +23,27 @@ namespace lb7.страницы
     /// </summary>
     public partial class Page2 : System.Windows.Controls.Page
     {
+        
         public Page2()
         {
             InitializeComponent();
-          //  iitializeExcel();
-            
-
+            DatePick.SelectedDate = DateTime.Today;
         }
-
+        void initDataGrid()
+        {
+         //   dgrid.ItemsSource=
+        }
         private void initWORD()
         {
-            List<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result> Lputotch = new List<HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА_Result>();
+            List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result> Lputotch = new List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result>();
             try
             {
                 using (BdModelContainer _context = new BdModelContainer())
                 {
-                    System.Data.SqlClient.SqlParameter param = new System.Data.SqlClient.SqlParameter();
-                    param.ParameterName = "@dateMonth";
-                    param.Value = Convert.ToDateTime("01-01-2015");
-                    param.SqlDbType = System.Data.SqlDbType.DateTime;
-                    param.Direction = System.Data.ParameterDirection.Input;
+       
                     DateTime? par = Convert.ToDateTime(DatePick.SelectedDate);
 
-
-                    var phones = _context.Database.SqlQuery<Путевые_листы>("HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА @dateMonth", param);
-                    
-                    foreach (var v in _context.HR_ОТЧЕТЫ_ФАКТИЧЕСКИЙ_РАСХОД_ТОПЛИВА(par))
+                    foreach (var v in _context.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(par))
                     {
                         Lputotch.Add(v);
                     }
@@ -109,17 +104,17 @@ namespace lb7.страницы
                 wordcellrange = wordtable.Cell(i, 1).Range;
                 wordcellrange.Text = i-2+"";
                 wordcellrange = wordtable.Cell(i, 2).Range;
-                wordcellrange.Text = sv.Остаток_топлива+"";
+                wordcellrange.Text = sv.Марка_авто+"\n ("+sv.Регистрационный_номер+")";
                 wordcellrange = wordtable.Cell(i, 3).Range;
-                wordcellrange.Text = sv.Количество_литров+"";
+                wordcellrange.Text = "Перевозка людей, оборудования, материалов";
                 wordcellrange = wordtable.Cell(i, 4).Range;
-                wordcellrange.Text = Lputotch.Capacity+"";
+                wordcellrange.Text = sv.Остаток_Топлива_При_Выезде_На_Первое_число+"";
                 wordcellrange = wordtable.Cell(i, 5).Range;
-                wordcellrange.Text = "Получено за месяц";
+                wordcellrange.Text = sv.Количество_литров_за_месяц+"";
                 wordcellrange = wordtable.Cell(i, 6).Range;
-                wordcellrange.Text = "Расход";
+                wordcellrange.Text =sv.Расход_за_месяц+"";
                 wordcellrange = wordtable.Cell(i, 7).Range;
-                wordcellrange.Text = "Остаток на конец месяца";
+                wordcellrange.Text =sv.Остаток_Топлива_При_Возвращении_На_Последнее_число+ "";
             }
 
             object begCell = wordtable.Cell(1, 1).Range.Start;
@@ -203,5 +198,9 @@ namespace lb7.страницы
         {
         }
 
+        private void buttontest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
