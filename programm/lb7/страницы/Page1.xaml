@@ -78,7 +78,7 @@
                     <Setter Property="FontSize" Value="20" />
                     <Setter Property="Background" >
                         <Setter.Value>
-                            <SolidColorBrush Color="#FF2A3828"  />
+                            <SolidColorBrush Color="#FF195510"  />
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Foreground" >

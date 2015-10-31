@@ -39,6 +39,31 @@
           <Property Name="ВодителиТабельный_номер" Type="int" Nullable="false" />
           <Property Name="Расход" Type="int" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SysAnalyze.dbo.Путевые_листы_отчет" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Путевые_листы_отчет">
+          <Key>
+            <PropertyRef Name="Номер_путевого" />
+            <PropertyRef Name="АвтомобилиРегистрационный_номер" />
+            <PropertyRef Name="Марка_авто" />
+            <PropertyRef Name="ВодителиТабельный_номер" />
+            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="Дата_и_время_отправления" />
+          </Key>
+          <Property Name="Номер_путевого" Type="int" Nullable="false" />
+          <Property Name="АвтомобилиРегистрационный_номер" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Марка_авто" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ВодителиТабельный_номер" Type="int" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Показания_спидометра" Type="int" />
+          <Property Name="Дата_и_время_отправления" Type="datetime" Nullable="false" />
+          <Property Name="Показания_спидометра_при_приезде" Type="int" />
+          <Property Name="Дата_время_возвращения" Type="datetime" />
+          <Property Name="Марка_топлива" Type="nvarchar" MaxLength="20" />
+          <Property Name="Количество_литров" Type="int" />
+          <Property Name="Остаток_топлива" Type="int" />
+          <Property Name="Остаток_топлива_при_приезде" Type="int" />
+        </EntityType>
         <Association Name="FK_АвтомобилиПутевые_листы">
           <End Role="АвтомобилиSet" Type="Self.АвтомобилиSet" Multiplicity="1" />
           <End Role="Путевые_листыSet" Type="Self.Путевые_листыSet" Multiplicity="*" />
@@ -85,6 +110,23 @@
           <EntitySet Name="АвтомобилиSet" EntityType="Self.АвтомобилиSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ВодителиSet" EntityType="Self.ВодителиSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Путевые_листыSet" EntityType="Self.Путевые_листыSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Путевые_листы_отчет" EntityType="Self.Путевые_листы_отчет" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Путевые_листы_отчет].[Номер_путевого] AS [Номер_путевого], 
+    [Путевые_листы_отчет].[АвтомобилиРегистрационный_номер] AS [АвтомобилиРегистрационный_номер], 
+    [Путевые_листы_отчет].[Марка_авто] AS [Марка_авто], 
+    [Путевые_листы_отчет].[ВодителиТабельный_номер] AS [ВодителиТабельный_номер], 
+    [Путевые_листы_отчет].[ФИО] AS [ФИО], 
+    [Путевые_листы_отчет].[Показания_спидометра] AS [Показания_спидометра], 
+    [Путевые_листы_отчет].[Дата_и_время_отправления] AS [Дата_и_время_отправления], 
+    [Путевые_листы_отчет].[Показания_спидометра_при_приезде] AS [Показания_спидометра_при_приезде], 
+    [Путевые_листы_отчет].[Дата_время_возвращения] AS [Дата_время_возвращения], 
+    [Путевые_листы_отчет].[Марка_топлива] AS [Марка_топлива], 
+    [Путевые_листы_отчет].[Количество_литров] AS [Количество_литров], 
+    [Путевые_листы_отчет].[Остаток_топлива] AS [Остаток_топлива], 
+    [Путевые_листы_отчет].[Остаток_топлива_при_приезде] AS [Остаток_топлива_при_приезде]
+    FROM [dbo].[Путевые_листы_отчет] AS [Путевые_листы_отчет]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_АвтомобилиПутевые_листы" Association="Self.FK_АвтомобилиПутевые_листы">
             <End Role="АвтомобилиSet" EntitySet="АвтомобилиSet" />
             <End Role="Путевые_листыSet" EntitySet="Путевые_листыSet" />
@@ -124,6 +166,7 @@
           <FunctionImport Name="HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1" ReturnType="Collection(BdModel.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result)">
           <Parameter Name="dateMonth" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Путевые_листы_отчет" EntityType="BdModel.Путевые_листы_отчет" />
         </EntityContainer>
         <EntityType Name="Водители">
           <Key>
@@ -236,6 +279,29 @@
           <Property Type="Int32" Name="Расход_за_месяц" Nullable="true" />
           <Property Type="Int32" Name="Количество_литров_за_месяц" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Путевые_листы_отчет">
+          <Key>
+            <PropertyRef Name="Номер_путевого" />
+            <PropertyRef Name="АвтомобилиРегистрационный_номер" />
+            <PropertyRef Name="Марка_авто" />
+            <PropertyRef Name="ВодителиТабельный_номер" />
+            <PropertyRef Name="ФИО" />
+            <PropertyRef Name="Дата_и_время_отправления" />
+          </Key>
+          <Property Name="Номер_путевого" Type="Int32" Nullable="false" />
+          <Property Name="АвтомобилиРегистрационный_номер" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Марка_авто" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ВодителиТабельный_номер" Type="Int32" Nullable="false" />
+          <Property Name="ФИО" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Показания_спидометра" Type="Int32" />
+          <Property Name="Дата_и_время_отправления" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Показания_спидометра_при_приезде" Type="Int32" />
+          <Property Name="Дата_время_возвращения" Type="DateTime" Precision="3" />
+          <Property Name="Марка_топлива" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Количество_литров" Type="Int32" />
+          <Property Name="Остаток_топлива" Type="Int32" />
+          <Property Name="Остаток_топлива_при_приезде" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -303,6 +369,25 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Путевые_листы_отчет">
+            <EntityTypeMapping TypeName="BdModel.Путевые_листы_отчет">
+              <MappingFragment StoreEntitySet="Путевые_листы_отчет">
+                <ScalarProperty Name="Остаток_топлива_при_приезде" ColumnName="Остаток_топлива_при_приезде" />
+                <ScalarProperty Name="Остаток_топлива" ColumnName="Остаток_топлива" />
+                <ScalarProperty Name="Количество_литров" ColumnName="Количество_литров" />
+                <ScalarProperty Name="Марка_топлива" ColumnName="Марка_топлива" />
+                <ScalarProperty Name="Дата_время_возвращения" ColumnName="Дата_время_возвращения" />
+                <ScalarProperty Name="Показания_спидометра_при_приезде" ColumnName="Показания_спидометра_при_приезде" />
+                <ScalarProperty Name="Дата_и_время_отправления" ColumnName="Дата_и_время_отправления" />
+                <ScalarProperty Name="Показания_спидометра" ColumnName="Показания_спидометра" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="ВодителиТабельный_номер" ColumnName="ВодителиТабельный_номер" />
+                <ScalarProperty Name="Марка_авто" ColumnName="Марка_авто" />
+                <ScalarProperty Name="АвтомобилиРегистрационный_номер" ColumnName="АвтомобилиРегистрационный_номер" />
+                <ScalarProperty Name="Номер_путевого" ColumnName="Номер_путевого" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

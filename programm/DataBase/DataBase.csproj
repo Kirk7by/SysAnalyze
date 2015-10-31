@@ -92,6 +92,9 @@
     <Compile Include="Путевые_листы.cs">
       <DependentUpon>BdModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Путевые_листы_отчет.cs">
+      <DependentUpon>BdModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BdModel.edmx">

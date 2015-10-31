@@ -24,6 +24,7 @@ namespace lb7.страницы
     public partial class Page2 : System.Windows.Controls.Page
     {
         List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result> Lputotch = new List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result>();
+        List<Путевые_листы_отчет> Lput = new List<Путевые_листы_отчет>();
         public Page2()
         {
             InitializeComponent();
@@ -48,6 +49,31 @@ namespace lb7.страницы
                     else
                     {
                         Lputotch = _context.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(par).ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            { MessageBox.Show(Convert.ToString(ex)); return ex; }
+            return null;
+        }
+
+        Exception initDataBaseПутевыеЛисты()
+        {
+            try
+            {
+                DateTime? par = Convert.ToDateTime(DatePick.SelectedDate);
+
+                using (BdModelContainer _context = new BdModelContainer())
+                {
+                    if(par!=null)
+                    {
+                        Lput = (from allputonlydate in _context.Путевые_листы_отчет
+                                where (allputonlydate.Дата_время_возвращения.Value.Year == par.Value.Year && allputonlydate.Дата_время_возвращения.Value.Month == par.Value.Month)
+                                select allputonlydate).ToList();
+                    }
+                    else
+                    {
+                        Lput = _context.Путевые_листы_отчет.ToList();
                     }
                 }
             }
@@ -131,6 +157,61 @@ namespace lb7.страницы
             wordcellrange.Cells.Shading.BackgroundPatternColor = WdColor.wdColorGray10;
             wordcellrange.Font.Size = 26;
             word.Selection.Cells.Merge();   //объединение ячеек            
+        }
+
+
+        private void initWORD2()
+        {
+
+            if (initDataBaseVehicle1() != null)
+                return;
+
+            Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application(); //создаем COM-объект Word
+            word.Visible = true;
+
+            Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
+            doc.Select();
+            doc.PageSetup.TogglePortrait(); //горизонтальный вид
+
+            Object defaultTableBehavior = Microsoft.Office.Interop.Word.WdDefaultTableBehavior.wdWord9TableBehavior;
+            Object autoFitBehavior = Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitWindow;
+            //Добавляем таблицу и получаем объект wordtable 
+
+            Microsoft.Office.Interop.Word.Range wordrange = doc.Range(0, 1);
+            wordrange.Select();
+            wordrange.Font.Size = 16;
+            wordrange.Font.Name = "Times New Roman";
+
+
+            Microsoft.Office.Interop.Word.Table wordtable = doc.Tables.Add(wordrange, 15, 7, ref defaultTableBehavior, ref autoFitBehavior);
+            wordtable.Rows.Alignment = Microsoft.Office.Interop.Word.WdRowAlignment.wdAlignRowCenter;
+            Microsoft.Office.Interop.Word.Range wordcellrange = doc.Tables[1].Cell(1, 2).Range;
+
+            wordcellrange = wordtable.Cell(1, 1).Range;
+            wordcellrange.Text = "Путевой лист № " + Lput[0].Номер_путевого+" на " + Lput[0].Дата_и_время_отправления;
+
+            object begCell = wordtable.Cell(1, 1).Range.Start;
+            object endCell = wordtable.Cell(1, 7).Range.End;
+            wordcellrange = doc.Range(ref begCell, ref endCell);
+            wordcellrange.Select();
+            wordcellrange.Cells.Shading.BackgroundPatternColor = WdColor.wdColorGray10;
+            wordcellrange.Font.Size = 26;
+            word.Selection.Cells.Merge();
+
+            /*
+
+            wordtable = doc.Tables.Add(doc.Range., 15, 7, ref defaultTableBehavior, ref autoFitBehavior);
+            wordtable.Rows.Alignment = Microsoft.Office.Interop.Word.WdRowAlignment.wdAlignRowCenter;
+            wordcellrange = doc.Tables[1].Cell(1, 2).Range;
+
+            wordcellrange = wordtable.Cell(1, 1).Range;
+            wordcellrange.Text = "Путевой лист № " + Lput[1].Номер_путевого + " на " + Lput[1].Дата_и_время_отправления;
+
+            */ //TODO: ОСТАНОВКА ПОКА ТУТ
+
+
+
+
         }
         void iitializeExcel()
         {
@@ -230,6 +311,15 @@ namespace lb7.страницы
             {
                 if (initDataBaseVehicle1()==null)
                     DataGridFill();
+            }
+        }
+
+        private void Отчет_путевые_листы_Click(object sender, RoutedEventArgs e)
+        {
+            if (initDataBaseПутевыеЛисты() == null)
+            {
+                dgrid.ItemsSource = Lput.ToList();
+                initWORD2();
             }
         }
     }

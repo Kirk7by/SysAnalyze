@@ -55,3 +55,4 @@ C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\Dictionary1.baml
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\Work Buhgalter.csproj.ResolveComReference.cache
 C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\word1.docx
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7_Content.g.cs
+C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\media\nobody.one - Tension.mp3

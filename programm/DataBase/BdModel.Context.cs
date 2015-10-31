@@ -30,6 +30,7 @@ namespace DataBase
         public virtual DbSet<Водители> ВодителиSet { get; set; }
         public virtual DbSet<Автомобили> АвтомобилиSet { get; set; }
         public virtual DbSet<Путевые_листы> Путевые_листыSet { get; set; }
+        public virtual DbSet<Путевые_листы_отчет> Путевые_листы_отчет { get; set; }
     
         public virtual ObjectResult<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО_Result> HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО(Nullable<System.DateTime> dateMonth)
         {

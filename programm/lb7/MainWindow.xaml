@@ -110,7 +110,7 @@
                 </Button.Triggers>
             </Button>
         </Grid>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Margin="612,-22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Source="media/nobody.one - Tension.mp3"/>
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Margin="612,-22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Source="media/nobody.one - Tension.mp3" LoadedBehavior="Pause"/>
 
     </Grid>
 </Window>
