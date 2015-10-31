@@ -24,10 +24,10 @@
                 <ColumnDefinition Width="129*"/>
             </Grid.ColumnDefinitions>
             <GridSplitter Margin="0,2,0,0" Width="9" Grid.Column="2" Background="#FFC5FFBB" Grid.RowSpan="6"/>
-            <DataGrid x:Name="dgrid" Margin="5,25,1,2" Grid.Column="3" Grid.RowSpan="5"/>
+            <DataGrid x:Name="dgrid" Margin="5,25,1,2" Grid.Column="3" Grid.RowSpan="5" Style="{DynamicResource DataGridStyle2}" ColumnWidth="*" IsReadOnly="True"/>
             <Label Content="Формирование отчетов" Margin="5,0,0,0" Grid.Column="3" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
             <Button x:Name="Сформированить_отчет" Content="Сформировать отчет" Margin="5,3,0,3" Background="#FF7E977D" BorderBrush="{x:Null}" Grid.Column="3" Grid.Row="5" Foreground="White" FontSize="18" Click="Сформированить_отчет_Click" Style="{DynamicResource DefaultButtonStyle}"/>
-            <DatePicker x:Name="DatePick" Margin="1,10,14,0" VerticalAlignment="Top" Height="23" Grid.Column="2"/>
+            <DatePicker x:Name="DatePick" Margin="1,10,14,0" VerticalAlignment="Top" Height="23" Grid.Column="2" SelectedDateChanged="DatePick_SelectedDateChanged"/>
             <Grid x:Name="GridReportTS" Grid.ColumnSpan="2" Margin="0,3,10,10" Grid.RowSpan="2" Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="31*"/>
@@ -38,12 +38,12 @@
                     <ColumnDefinition Width="115*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="Отчет_о_работе_тс" Content="Отчет о работе ТС" Margin="0,8,0,0" Background="#FFADC1A8" BorderBrush="{x:Null}" Foreground="White" Click="Отчет_о_работе_тс_Click" Style="{DynamicResource DefaultButtonStyle}" HorizontalContentAlignment="Left" FontSize="20" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-                <Button x:Name="button_Copy1" Content="" Margin="0,1,6,3" BorderBrush="{x:Null}" Style="{DynamicResource buttonSetupStyle}" Foreground="{x:Null}" BorderThickness="0" ToolTip="Вывод таблицы без пустых  значений" Background="#66424242" RenderTransformOrigin="0.783,0.599" Grid.Column="1" HorizontalAlignment="Right" Width="105" Grid.Row="1">
+                <Button x:Name="ButtonEmptyVehicleAugen" Content="" Margin="0,1,6,3" BorderBrush="{x:Null}" Style="{DynamicResource buttonSetupStyle}" Foreground="{x:Null}" BorderThickness="0" ToolTip="Вывод таблицы без пустых  значений" Background="#66424242" RenderTransformOrigin="0.783,0.599" Grid.Column="1" HorizontalAlignment="Right" Width="105" Grid.Row="1" Click="ButtonEmptyVehicleAugen_Click">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/lb7;component/media/eye-icon.png"/>
                     </Button.OpacityMask>
                 </Button>
-                <Button x:Name="button" Content="" Margin="0,13,6,4" BorderBrush="{x:Null}" Style="{DynamicResource buttonSetupStyle}" Foreground="{x:Null}" Background="#66424242" BorderThickness="0" ToolTip="Вывод таблицы без пустых  значений" Grid.Column="1" HorizontalAlignment="Right" Width="105">
+                <Button x:Name="ButtonEmptyVehicle" Content="" Margin="0,13,6,4" BorderBrush="{x:Null}" Style="{DynamicResource buttonSetupStyle}" Foreground="{x:Null}" Background="#66424242" BorderThickness="0" ToolTip="Вывод таблицы без пустых  значений" Grid.Column="1" HorizontalAlignment="Right" Width="105" Click="ButtonEmptyVehicle_Click">
                     <Button.OpacityMask>
                         <ImageBrush ImageSource="/lb7;component/media/clean_brush-512.png"/>
                     </Button.OpacityMask>

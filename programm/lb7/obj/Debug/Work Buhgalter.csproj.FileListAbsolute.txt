@@ -51,7 +51,7 @@ C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\DataBase.dll
 C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\BuhgalterCore.pdb
 C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\DataBase.pdb
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\App.baml
-C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7_MarkupCompile.lref
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\Dictionary1.baml
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\Work Buhgalter.csproj.ResolveComReference.cache
 C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\word1.docx
+C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7_Content.g.cs

@@ -23,46 +23,54 @@ namespace lb7.страницы
     /// </summary>
     public partial class Page2 : System.Windows.Controls.Page
     {
-        
+        List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result> Lputotch = new List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result>();
         public Page2()
         {
             InitializeComponent();
             DatePick.SelectedDate = DateTime.Today;
         }
-        void initDataGrid()
+        Exception initDataBaseVehicle1()
         {
-         //   dgrid.ItemsSource=
-        }
-        private void initWORD()
-        {
-            List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result> Lputotch = new List<HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1_Result>();
             try
             {
                 using (BdModelContainer _context = new BdModelContainer())
                 {
-       
+
+
                     DateTime? par = Convert.ToDateTime(DatePick.SelectedDate);
 
-                    foreach (var v in _context.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(par))
+                    if (ButtonEmptyVehicle.Background == Brushes.Green) //чистка выдачи пустых полей в ворд
                     {
-                        Lputotch.Add(v);
+                        Lputotch = (from removeEmptyValue in _context.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(par)
+                                    where (removeEmptyValue.Остаток_Топлива_При_Выезде_На_Первое_число != null || removeEmptyValue.Остаток_Топлива_При_Выезде_На_Первое_число != null)
+                                    select removeEmptyValue).ToList();
                     }
-                    
+                    else
+                    {
+                        Lputotch = _context.HR_ОТЧЕТЫ_АКТ_ОБ_ОСТАТКАХ_ТОПЛИВА_ПО_КАЖДОМУ_АВТО1(par).ToList();
+                    }
                 }
             }
             catch (Exception ex)
-            { MessageBox.Show(Convert.ToString(ex)); return; }
+            { MessageBox.Show(Convert.ToString(ex)); return ex; }
+            return null;
+        }
+        void DataGridFill()
+        {
+            dgrid.ItemsSource = Lputotch.ToList();
+        }
+        private void initWORD()
+        {
 
+            if (initDataBaseVehicle1() != null)
+                return;
 
             Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application(); //создаем COM-объект Word
             word.Visible = true;
-
-           
+ 
             Microsoft.Office.Interop.Word.Document doc = word.Documents.Add();
             doc.Select();
             doc.PageSetup.TogglePortrait(); //горизонтальный вид
-
-
 
             Object defaultTableBehavior = Microsoft.Office.Interop.Word.WdDefaultTableBehavior.wdWord9TableBehavior;
             Object autoFitBehavior = Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitWindow;
@@ -75,9 +83,7 @@ namespace lb7.страницы
             
 
             Microsoft.Office.Interop.Word.Table wordtable = doc.Tables.Add(wordrange, 2+ Lputotch.Count, 7, ref defaultTableBehavior, ref autoFitBehavior);
-
             wordtable.Rows.Alignment = Microsoft.Office.Interop.Word.WdRowAlignment.wdAlignRowCenter;
-
             Microsoft.Office.Interop.Word.Range wordcellrange = doc.Tables[1].Cell(1, 2).Range;
 
             wordcellrange = wordtable.Cell(1, 1).Range;
@@ -96,7 +102,7 @@ namespace lb7.страницы
             wordcellrange.Text = "Расход";
             wordcellrange = wordtable.Cell(2, 7).Range;
             wordcellrange.Text = "Остаток на конец месяца";
-
+           
             int i = 2;
             foreach(var sv in Lputotch)
             {
@@ -119,20 +125,13 @@ namespace lb7.страницы
 
             object begCell = wordtable.Cell(1, 1).Range.Start;
             object endCell = wordtable.Cell(1, 7).Range.End;
-
-
            
             wordcellrange = doc.Range(ref begCell, ref endCell);
             wordcellrange.Select();
             wordcellrange.Cells.Shading.BackgroundPatternColor = WdColor.wdColorGray10;
             wordcellrange.Font.Size = 26;
-            
-            word.Selection.Cells.Merge();
-            
-
-            
+            word.Selection.Cells.Merge();   //объединение ячеек            
         }
-
         void iitializeExcel()
         {
 
@@ -201,6 +200,37 @@ namespace lb7.страницы
         private void buttontest_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ButtonEmptyVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            if(ButtonEmptyVehicle.Background!= Brushes.Green)
+                ButtonEmptyVehicle.Background = Brushes.Green;
+            else
+                ButtonEmptyVehicle.Background = (Brush)new BrushConverter().ConvertFrom("#66424242");
+
+        }
+
+        private void ButtonEmptyVehicleAugen_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonEmptyVehicleAugen.Background != Brushes.Green)
+            {
+                ButtonEmptyVehicleAugen.Background = Brushes.Green;
+                if (initDataBaseVehicle1() == null)
+                    DataGridFill();
+            }
+            else
+                ButtonEmptyVehicleAugen.Background = (Brush)new BrushConverter().ConvertFrom("#66424242");
+        }
+       
+
+        private void DatePick_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ButtonEmptyVehicleAugen.Background == Brushes.Green)
+            {
+                if (initDataBaseVehicle1()==null)
+                    DataGridFill();
+            }
         }
     }
 }

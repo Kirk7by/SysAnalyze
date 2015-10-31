@@ -8,8 +8,29 @@
 	Title="Page1">
 
     <Page.Resources>
+        <Style x:Key="cell0Style" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#FF5EEE71"></Setter>
+            <Style.Triggers>
+                <Trigger Property="DataGridCell.IsSelected" Value="true" >
+                    <Setter Property="BorderThickness" Value="4,4,2,4" />
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF27D400"  />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" >
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FF912E2E"  />
+                        </Setter.Value>
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="cell1Style" TargetType="DataGridCell">
-            <Setter Property="Background" Value="#FFEAE8DB"></Setter>
+            <Setter Property="Background" Value="#FFD7EA60"></Setter>
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="true" >
                     <Setter Property="BorderThickness" Value="4,4,2,4" />
@@ -111,7 +132,7 @@
                 </DataGrid.Background>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="Номер_путевогоColumn"   Binding="{Binding Номер_путевого}" 
-                                Header="№" CellStyle="{StaticResource cell1Style}"  />
+                                Header="№" CellStyle="{StaticResource cell0Style}"  />
                     <DataGridTextColumn x:Name="ВодителиТабельный_номерColumn" Binding="{Binding ВодителиТабельный_номер}" CellStyle="{StaticResource cell1Style}"  
                                 Header="Таб. номер водителя" />
                     <DataGridTextColumn x:Name="АвтомобилиРегистрационный_номерColumn" Binding="{Binding АвтомобилиРегистрационный_номер}"   CellStyle="{StaticResource cell1Style}"
