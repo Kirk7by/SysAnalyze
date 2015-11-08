@@ -96,7 +96,7 @@
                 <Trigger Property="DataGridCell.IsSelected" Value="true" >
                     <Setter Property="BorderThickness" Value="2,4,4,4" />
                     <Setter Property="FontSize" Value="22" />
-                    
+
                     <Setter Property="Background" >
                         <Setter.Value>
                             <SolidColorBrush Color="#FF990000"  />
@@ -115,17 +115,22 @@
 
 
     <Grid>
-        <Grid Margin="0,0,5.8,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="103*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="0,0,6,0" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="55"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0*"/>
-                <ColumnDefinition x:Name="columnVievbox" Width="118*"/>
-                <ColumnDefinition Width="389*"/>
+                <ColumnDefinition x:Name="columnVievbox" Width="236*"/>
+                <ColumnDefinition Width="53*"/>
+                <ColumnDefinition Width="725*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="dGrid" Margin="5,25,1,5" Grid.Column="2" BorderBrush="{x:Null}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" FontSize="14.667" SelectionChanged="dGrid_SelectionChanged">
+            <DataGrid x:Name="dGrid" Margin="5,25,1,5" Grid.Column="2" BorderBrush="{x:Null}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" AutoGenerateColumns="False" FontSize="14.667" SelectionChanged="dGrid_SelectionChanged" Grid.ColumnSpan="2">
 
                 <DataGrid.Background>
                     <SolidColorBrush Color="#B2F0F0F0" Opacity="0.8"/>
@@ -162,8 +167,8 @@
                 </DataGrid.Columns>
 
             </DataGrid>
-            <Label Content="Информация о путевых листах" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top"/>
-            <Grid Margin="5,0,0,-3" Grid.Column="2" Grid.Row="1">
+            <Label Content="Информация о путевых листах" Margin="5,0,0,0" Grid.Column="2" HorizontalAlignment="Left" Width="181" Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Grid Margin="5,0,0,-3" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="137*"/>
                     <ColumnDefinition Width="151*"/>
@@ -179,7 +184,7 @@
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFEAE8DB" Margin="1,-2,1,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFADF7A0" Margin="1,252,0,0"/>
                     <Border BorderBrush="#FFC5FFBB" BorderThickness="1" Height="100" VerticalAlignment="Top" Background="#FFACF5E5" Margin="0,125,0,0"/>
-                    <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="88,6,40,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1" BorderBrush="{x:Null}" Background="#CCFFFFFF" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="tb1NumberPutevogo" Height="26" Margin="86,6,66,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1" BorderBrush="{x:Null}" Background="#CCFFFFFF" FontFamily="Comic Sans MS"/>
                     <Label Content="Путевой №" HorizontalAlignment="Left" Margin="7,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.75,6.133" Width="79" Padding="0" Height="24" Foreground="#FF1900FF" FontSize="14" FontWeight="Bold" FontFamily="Arial"/>
                     <TextBox x:Name="tb2OstTopliva" Height="26" Margin="82,130,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1" BorderBrush="{x:Null}" Background="#99FFFFFF" FontFamily="Comic Sans MS"/>
                     <TextBox x:Name="tb2PokazSpidometra" Height="26" Margin="82,161,12,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Uid="1" BorderBrush="{x:Null}" Background="#99FFFFFF" FontFamily="Comic Sans MS"/>
@@ -232,9 +237,17 @@
                     <DatePicker x:Name="tb3DateTime" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,323,0,0" Width="105"/>
                     <ComboBox x:Name="tb1NumberAvto" HorizontalAlignment="Left" Margin="74,71,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded" BorderBrush="{x:Null}" FontFamily="Comic Sans MS"/>
                     <ComboBox x:Name="tb1NumberTabelnogo" HorizontalAlignment="Left" Margin="74,41,0,0" VerticalAlignment="Top" Width="111" Loaded="tb1NumberTabelnogotb1NumberAvto_Loaded" BorderBrush="{x:Null}" FontFamily="Comic Sans MS"/>
-                    <Button x:Name="Clear_update" Content="" HorizontalAlignment="Left" Margin="160,6,0,0" VerticalAlignment="Top" Width="25" Height="26" RenderTransformOrigin="0.449,0.469" Click="Clear_update_Click" BorderBrush="#FFB8B8B8" Foreground="{x:Null}" BorderThickness="3,3,3,5" Opacity="0.8" Background="#FFB8C1D1" Style="{DynamicResource buttonSetupStyle}">
+                    <Button x:Name="Clear_update" Content="" HorizontalAlignment="Left" Margin="133,6,0,0" VerticalAlignment="Top" Width="25" Height="26" RenderTransformOrigin="0.449,0.469" Click="Clear_update_Click" BorderBrush="#FFB8B8B8" Foreground="{x:Null}" BorderThickness="3,3,3,5" Opacity="0.8" Background="#FFB8C1D1" Style="{DynamicResource buttonSetupStyle}">
                         <Button.OpacityMask>
                             <ImageBrush Stretch="Uniform" ImageSource="/lb7;component/media/clean_brush-512.png"/>
+                        </Button.OpacityMask>
+                    </Button>
+                    <Button x:Name="WordButtons" Content="" HorizontalAlignment="Left" Margin="160,6,0,0" VerticalAlignment="Top" Width="25" Height="26" RenderTransformOrigin="0.449,0.469" BorderBrush="#FFB8B8B8" Foreground="{x:Null}" BorderThickness="0" Opacity="0.8" Click="WordButtons_Click_1">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/lb7;component/media/word.png" Stretch="Uniform"/>
+                        </Button.Background>
+                        <Button.OpacityMask>
+                            <ImageBrush Stretch="Uniform" ImageSource="/lb7;component/media/word.png"/>
                         </Button.OpacityMask>
                     </Button>
                 </Grid>

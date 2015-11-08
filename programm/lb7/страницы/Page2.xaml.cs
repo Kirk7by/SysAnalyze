@@ -102,11 +102,22 @@ namespace lb7.страницы
             Object autoFitBehavior = Microsoft.Office.Interop.Word.WdAutoFitBehavior.wdAutoFitWindow;
             //Добавляем таблицу и получаем объект wordtable 
 
+
+
+
+
             Microsoft.Office.Interop.Word.Range wordrange = doc.Range(0, 1);
             wordrange.Select();
             wordrange.Font.Size = 16;
             wordrange.Font.Name = "Times New Roman";
-            
+
+
+            wordrange.InsertParagraphAfter();
+
+            wordrange.InsertParagraphAfter();
+
+            wordrange.InsertParagraphAfter();
+
 
             Microsoft.Office.Interop.Word.Table wordtable = doc.Tables.Add(wordrange, 2+ Lputotch.Count, 7, ref defaultTableBehavior, ref autoFitBehavior);
             wordtable.Rows.Alignment = Microsoft.Office.Interop.Word.WdRowAlignment.wdAlignRowCenter;
@@ -158,7 +169,7 @@ namespace lb7.страницы
             wordcellrange.Font.Size = 26;
             word.Selection.Cells.Merge();   //объединение ячеек            
         }
-
+        
 
         private void initWORD2()
         {
