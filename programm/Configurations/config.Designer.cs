@@ -8,18 +8,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace lb7.Properties {
+namespace Configurations {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class config : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        private static config defaultInstance = ((config)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new config())));
         
-        public static Settings Default {
+        public static config Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("(LocalDb)\\MSSQLLocalDB;Initial Catalog=SysAnalyze;")]
+        public string connectionsString {
+            get {
+                return ((string)(this["connectionsString"]));
+            }
+            set {
+                this["connectionsString"] = value;
             }
         }
     }

@@ -14,14 +14,15 @@ namespace DataBase
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
+    using Configurations;
     
     public partial class BdModelContainer : DbContext
     {
         public BdModelContainer()
-            : base("name=BdModelContainer")
+            : base(@"metadata = res://*/BdModel.csdl|res://*/BdModel.ssdl|res://*/BdModel.msl;provider=System.Data.SqlClient;provider connection string=" + '\u0022' + @";data source="+config.Default.connectionsString+";integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" + '\u0022' + ";")
         {
         }
-    
+        //connectionString="metadata=res://*/BdModel.csdl|res://*/BdModel.ssdl|res://*/BdModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDb)\MSSQLLocalDB;initial catalog=SysAnalyze;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

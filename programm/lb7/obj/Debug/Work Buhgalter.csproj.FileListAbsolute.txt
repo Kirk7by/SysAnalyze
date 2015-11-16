@@ -35,3 +35,5 @@ C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7_MarkupCompile.cache
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7.g.resources
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\lb7.Properties.Resources.resources
 C:\my program Projects\SysAnalyze\programm\lb7\obj\Debug\Work Buhgalter.csproj.GenerateResource.Cache
+C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\Configurations.dll
+C:\my program Projects\SysAnalyze\programm\lb7\bin\Debug\Configurations.pdb

@@ -121,20 +121,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="excel1.xlsx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="Properties\" />
     <EmbeddedResource Include="word1.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -147,6 +138,10 @@
     <ProjectReference Include="..\BuhgalterCore\BuhgalterCore.csproj">
       <Project>{be86695c-c272-4699-ae7e-31aac240489a}</Project>
       <Name>BuhgalterCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configurations\Configurations.csproj">
+      <Project>{4474d7a9-ad24-4b47-a05f-e10663b70da4}</Project>
+      <Name>Configurations</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBase\DataBase.csproj">
       <Project>{1fac6295-3118-482b-84f4-b06b1028d0d5}</Project>

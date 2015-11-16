@@ -110,7 +110,13 @@
                 </Button.Triggers>
             </Button>
         </Grid>
-        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Margin="612,-22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Source="media/nobody.one - Tension.mp3" LoadedBehavior="Pause"/>
+        <MediaElement x:Name="mediaElement" HorizontalAlignment="Left" Height="100" Margin="1094,92,-222,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Source="media/nobody.one - Tension.mp3" LoadedBehavior="Pause"/>
+        <Button x:Name="settings" Content="Изменить" Grid.Column="1" VerticalAlignment="Top" Height="22" BorderBrush="{x:Null}" Foreground="#FF2F96BB" FontFamily="Consolas" Click="settings_Click" FontSize="9.333" HorizontalAlignment="Right" Width="52" MouseDoubleClick="settings_MouseDoubleClick" ToolTip="Для изменения строки подключения щелкните 2 раза" Style="{DynamicResource DefaultButtonStyle}">
+            <Button.Background>
+                <SolidColorBrush Color="#7FFFFFFF" Opacity="0.8"/>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="databaseTextBox" Grid.Column="1" Height="22" Margin="254,0,52,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="#4CFFFFFF" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="Подключение установлено: " Foreground="#FF180085" FontFamily="Consolas" FontSize="9.333" IsEnabled="False"/>
 
     </Grid>
 </Window>
